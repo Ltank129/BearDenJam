@@ -43,6 +43,9 @@
       <object>objects\boneBirdOBJ</object>
       <object>objects\stoneBirdOBJ</object>
     </objects>
+    <objects name="Item">
+      <object>objects\inventoryItem</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\testBirdRM</room>

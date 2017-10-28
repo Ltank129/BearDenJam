@@ -32,10 +32,12 @@ instance_destroy();
 
 
 
-//Set the Resource Count
-boneCount = 0;
-woodCount = 0;
-stoneCount = 0;
+//Create the inventory
+// width 0 = Item Type; 1 = Item Name; 2 = Item Count; 3 = Healing Factor; 4 = Health Bonus; 5 = Damage Bonus;
+//inventory = ds_list_create();  //Create the Inventory List
+
+//Inventory stored through floating invisible persistent objets
+
 
 villagerCount = 0;
 </string>
