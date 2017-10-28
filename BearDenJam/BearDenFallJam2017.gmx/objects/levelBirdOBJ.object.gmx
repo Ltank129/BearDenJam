@@ -36,6 +36,7 @@ var height = room_height div CELL_HEIGHT;
 
 // Create the grid
 grid = ds_grid_create(width, height);
+mpGrid = mp_grid_create(0,0,width,height,CELL_WIDTH,CELL_HEIGHT);
 
 // Fill the grid with the void
 ds_grid_set_region(grid, 0, 0, width-1, height-1, VOID);
@@ -96,7 +97,11 @@ for (var yy = 0; yy &lt; height; yy++) {
         if (grid[# xx, yy] == FLOOR) {
             // Draw the floor
             tile_add(floorTileBirdBKG, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0)
+        } else{
+        //Mark Cell as Forbidden in the ds Grid
+        mp_grid_add_cell(mpGrid,xx,yy);
         }
+        
     }
 }
 
@@ -207,6 +212,7 @@ for (var yy = 0; yy &lt; height*2; yy++) {
           <argument>
             <kind>1</kind>
             <string>ds_grid_destroy(grid);
+mp_grid_destroy(mpGrid);
 </string>
           </argument>
         </arguments>
