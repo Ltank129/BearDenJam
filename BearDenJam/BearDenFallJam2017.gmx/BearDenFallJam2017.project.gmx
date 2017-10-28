@@ -6,7 +6,6 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\playerBirdSPR</sprite>
     <sprites name="player">
       <sprites name="Walk">
         <sprite>sprites\playerWalkFrontBirdSPR</sprite>
@@ -39,7 +38,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\testBirdRM</room>
-    <room>rooms\testRatRM</room>
   </rooms>
   <constants number="6">
     <constant name="CELL_WIDTH">64</constant>
