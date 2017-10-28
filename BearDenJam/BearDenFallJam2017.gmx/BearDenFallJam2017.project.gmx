@@ -7,6 +7,20 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\playerBirdSPR</sprite>
+    <sprites name="player">
+      <sprites name="Walk">
+        <sprite>sprites\playerWalkFrontBirdSPR</sprite>
+        <sprite>sprites\playerWalkBackBirdSPR</sprite>
+        <sprite>sprites\playerWalkRightBirdSPR</sprite>
+        <sprite>sprites\playerWalkLeftBirdSPR</sprite>
+      </sprites>
+      <sprites name="Stand">
+        <sprite>sprites\playerIdleRightBirdSPR</sprite>
+        <sprite>sprites\playerIdleLeftBirdSPR</sprite>
+        <sprite>sprites\playerIdleFrontBirdSPR</sprite>
+        <sprite>sprites\playerIdleBackBirdSPR</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -25,12 +39,13 @@
     <room>rooms\testBirdRM</room>
     <room>rooms\testRatRM</room>
   </rooms>
-  <constants number="5">
+  <constants number="6">
     <constant name="CELL_WIDTH">64</constant>
     <constant name="CELL_HEIGHT">64</constant>
     <constant name="FLOOR">-5</constant>
     <constant name="WALL">-6</constant>
     <constant name="VOID">-7</constant>
+    <constant name="P_WALK">-22</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
