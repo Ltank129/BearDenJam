@@ -37,6 +37,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\testBirdRM</room>
+    <room>rooms\testRatRM</room>
   </rooms>
   <constants number="6">
     <constant name="CELL_WIDTH">64</constant>
