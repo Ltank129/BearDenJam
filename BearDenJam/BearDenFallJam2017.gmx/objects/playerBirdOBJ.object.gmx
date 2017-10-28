@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>myHP = 100;
 spd = 10;
+facing = 0;
+
 
 walkSprite[0] = playerWalkRightBirdSPR;
 walkSprite[1] = playerWalkBackBirdSPR;
@@ -60,10 +62,27 @@ idleSprite[3] = playerIdleFrontBirdSPR;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth=-y;
-var spd = 3;
+            <string>//set depth;
+depth=-y;
+
+
+//set movement stuff
 var hspd = (keyboard_check(vk_right) - keyboard_check(vk_left)) * spd;
 var vspd = (keyboard_check(vk_down) - keyboard_check(vk_up)) *spd;
+
+
+//set facing
+if(vspd &gt; 0) facing = 1;
+if(vspd &lt; 0) facing = 3;
+if(hspd &gt; 0) facing = 0;
+if(hspd &lt; 0) facing = 2;
+
+if(vspd!= 0 || hspd!= 0){
+sprite_index = walkSprite[facing];
+}else{
+sprite_index = idleSprite[facing];
+}
+
 
 //move
 mazeMoveBirdSCR(hspd,vspd);
