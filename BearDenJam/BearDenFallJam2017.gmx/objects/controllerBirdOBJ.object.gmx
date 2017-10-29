@@ -154,6 +154,7 @@ for(var i = 0; i&lt;ds_list_size(inventory);i++){
      draw_rectangle(444,56+32*i,576,72+32*i,false);
      draw_set_valign(fa_center);
      draw_set_color(c_white);
+     if(inventory[| i] != noone){
      draw_text(448,64+32*i,inventory[| i].myName + " x" + string(inventory[| i].count));
      
      //if usable, draw the use button
@@ -168,6 +169,9 @@ for(var i = 0; i&lt;ds_list_size(inventory);i++){
      draw_set_color(c_white)
      draw_text(594,64+i*32,"USE");
      
+     }
+     } else{
+     show_error("Null Object",true)
      }
 }
 }

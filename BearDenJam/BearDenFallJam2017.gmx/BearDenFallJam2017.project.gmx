@@ -29,6 +29,7 @@
     <sprites name="DungeonStuff">
       <sprite>sprites\dungeonDoorBirdSPR</sprite>
     </sprites>
+    <sprite>sprites\sprite15</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -40,6 +41,7 @@
     <script>scripts\grid_place_meetingBirdSCR.gml</script>
     <scripts name="InventoryScripts">
       <script>scripts\inventoryAddBirdSCR.gml</script>
+      <script>scripts\inventoryRemoveBirdSCR.gml</script>
     </scripts>
     <script>scripts\monster_pathingRatSCR.gml</script>
   </scripts>
@@ -54,6 +56,7 @@
       <object>objects\woodBirdOBJ</object>
       <object>objects\boneMealBirdOBJ</object>
       <object>objects\keyBirdOBJ</object>
+      <object>objects\dropItemOBJ</object>
     </objects>
     <objects name="Item">
       <object>objects\rInventoryItemBirdOBJ</object>
@@ -64,6 +67,7 @@
       <object>objects\oKeyItemBirdOBJ</object>
     </objects>
     <object>objects\monsterparrentOBJ</object>
+    <object>objects\doorBirdOBJ</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\testBirdRM</room>

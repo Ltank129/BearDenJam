@@ -16,6 +16,7 @@ var ret = false;
         //there is enough room
         var thisItem = instance_create(0,0,invItem);
         ds_list_add(controllerBirdOBJ.inventory,thisItem);
+        thisItem.myPos = ds_list_size(controllerBirdOBJ.inventory)-1;
         ret=true;
         }
     
