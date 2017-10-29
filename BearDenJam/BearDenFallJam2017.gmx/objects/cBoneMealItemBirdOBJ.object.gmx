@@ -36,7 +36,7 @@ count = 1;
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="10">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -54,11 +54,8 @@ count = 1;
           <argument>
             <kind>1</kind>
             <string>count -=1;
-playerBirdOBJ.myHP+=10;
-if(count&lt;=0){
-ds_list_delete(controllerBirdOBJ.inventory,ds_list_find_index(controllerBirdOBJ.inventory,self));
-instance_destroy();
-}
+controllerBirdOBJ.myHP+=10;
+event_user(0);
 </string>
           </argument>
         </arguments>

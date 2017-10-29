@@ -51,8 +51,6 @@ randomize();
 var cx = width div 2;
 var cy = height div 2;
 
-// Create the player
-instance_create(cx*CELL_WIDTH+CELL_WIDTH/2, cy*CELL_HEIGHT+CELL_HEIGHT/2, playerBirdOBJ);
 
 // Give the controller a random direction
 var cdir = irandom(3);
@@ -151,51 +149,51 @@ for (var yy = 0; yy &lt; height*2; yy++) {
             
             if (right) {
                 if (bottom) {
-                    tile_add(wallTilesBirdBKG, tw*4, th*1, tw, th, tx+tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*4, th*1, tw, th, tx+tw, ty, -ty-8);
                 } else if (top) {
                     if (top_right) {
-                        tile_add(wallTilesBirdBKG, tw*4, th*0, tw, th, tx+tw, ty-th, -ty);
+                        tile_add(wallTilesBirdBKG, tw*4, th*0, tw, th, tx+tw, ty-th, -ty-8);
                     } else {
-                        tile_add(wallTilesBirdBKG, tw*3, th*0, tw, th, tx, ty-th, -ty);
+                        tile_add(wallTilesBirdBKG, tw*3, th*0, tw, th, tx, ty-th, -ty-8);
                     }
-                    tile_add(wallTilesBirdBKG, tw*0, th*1, tw, th, tx+tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*0, th*1, tw, th, tx+tw, ty, -ty-8);
                 } else {
-                    tile_add(wallTilesBirdBKG, tw*0, th*1, tw, th, tx+tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*0, th*1, tw, th, tx+tw, ty, -ty-8);
                 }
             }
             
             if (left) {
                 if (bottom) {
-                    tile_add(wallTilesBirdBKG, tw*3, th*1, tw, th, tx-tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*3, th*1, tw, th, tx-tw, ty, -ty-8);
                 } else if (top) {
                     if (top_left) {
-                        tile_add(wallTilesBirdBKG, tw*3, th*0, tw, th, tx-tw, ty-th, -ty);
+                        tile_add(wallTilesBirdBKG, tw*3, th*0, tw, th, tx-tw, ty-th, -ty-8);
                     } else {
-                        tile_add(wallTilesBirdBKG, tw*4, th*0, tw, th, tx, ty-th, -ty);
+                        tile_add(wallTilesBirdBKG, tw*4, th*0, tw, th, tx, ty-th, -ty-8);
                     }
-                    tile_add(wallTilesBirdBKG, tw*2, th*1, tw, th, tx-tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*2, th*1, tw, th, tx-tw, ty, -ty-8);
                 } else {
-                    tile_add(wallTilesBirdBKG, tw*2, th*1, tw, th, tx-tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*2, th*1, tw, th, tx-tw, ty, -ty-8);
                 }
             }
             
             if (top) {
                 if (!top_right) {
-                    tile_add(wallTilesBirdBKG, tw*2, th*2, tw, th, tx, ty-th, -ty);
+                    tile_add(wallTilesBirdBKG, tw*2, th*2, tw, th, tx, ty-th, -ty-8);
                 } else if (!top_left) {
-                    tile_add(wallTilesBirdBKG, tw*0, th*2, tw, th, tx, ty-th, -ty);
+                    tile_add(wallTilesBirdBKG, tw*0, th*2, tw, th, tx, ty-th, -ty-8);
                 } else {
-                    tile_add(wallTilesBirdBKG, tw*1, th*2, tw, th, tx, ty-th, -ty);
+                    tile_add(wallTilesBirdBKG, tw*1, th*2, tw, th, tx, ty-th, -ty-8);
                 }
             }
             
             if (bottom) {
                 if (!bottom_right) {
-                    tile_add(wallTilesBirdBKG, tw*2, th*0, tw, th, tx, ty, -ty-tw);
+                    tile_add(wallTilesBirdBKG, tw*2, th*0, tw, th, tx, ty, -ty-tw-8);
                 } else if (!bottom_left) {
-                    tile_add(wallTilesBirdBKG, tw*0, th*0, tw, th, tx, ty, -ty-tw);
+                    tile_add(wallTilesBirdBKG, tw*0, th*0, tw, th, tx, ty, -ty-tw-8);
                 } else {
-                    tile_add(wallTilesBirdBKG, tw*1, th*0, tw, th, tx, ty, -ty-tw);
+                    tile_add(wallTilesBirdBKG, tw*1, th*0, tw, th, tx, ty, -ty-tw-8);
                 }
             }
         }
@@ -204,7 +202,43 @@ for (var yy = 0; yy &lt; height*2; yy++) {
 
 
 
+//add the dungeon door
+//pick a random tile
+var d = false;
+while(d=false){
+rx = irandom(width-1)+1;
+ry = irandom(height-2)+1;
+//check the tile
+if(grid[# rx,ry] == WALL &amp;&amp; grid[# rx,ry+1] == FLOOR){
+//This is a viable spot!
+    instance_create(rx*CELL_WIDTH+(CELL_WIDTH/2),ry*CELL_HEIGHT+(CELL_HEIGHT/2)+8,doorBirdOBJ);
+    d=true;
+}
+}
+
+
+
+
+//add the spawn point, staircase and player
+//pick a random tile
+var d = false;
+while(d=false){
+sx = irandom(width-1)+1;
+sy = irandom(height-2)+1;
+//check the tile
+if(grid[# sx,sy] == WALL &amp;&amp; grid[# sx,sy+1] == FLOOR &amp;&amp; (sx!=rx || sy!=ry)){
+//This is a viable spot!
+    instance_create(sx*CELL_WIDTH+(CELL_WIDTH/2),sy*CELL_HEIGHT+(CELL_HEIGHT/2)+8,staircaseBirdOBJ);
+    d=true;
+    instance_create(sx*CELL_WIDTH+(CELL_WIDTH/2),(sy+1)*CELL_HEIGHT+(CELL_HEIGHT/2),playerBirdOBJ);
+}
+}
+
+
 //instantiate a bunch of items
+
+
+//instantiate some bones
 var boneCount = random_range(5,15);
 mask_index = boneBirdSPR;
 for(var i = 0; i &lt; boneCount; i++){
@@ -213,14 +247,14 @@ while(p==false){
 var zx = random_range(48,room_width-48);
 var zy = random_range(48,room_width-48);
     if(!grid_place_meetingBirdSCR(zx,zy)){
-    //there isn't an enemy or a wall there;
-    //spawn an enemy
+
     p = true;
     instance_create(zx,zy,boneBirdOBJ);
     }
 }
 }
 
+//instantiate some stones
 var stoneCount = random_range(5,15);
 mask_index = stoneBirdSPR;
 for(var i = 0; i &lt; stoneCount; i++){
@@ -229,14 +263,14 @@ while(p==false){
 var zx = random_range(48,room_width-48);
 var zy = random_range(48,room_width-48);
     if(!grid_place_meetingBirdSCR(zx,zy)){
-    //there isn't an enemy or a wall there;
-    //spawn an enemy
+
     p = true;
     instance_create(zx,zy,stoneBirdOBJ);
     }
 }
 }
 
+//instantiate some wood
 var woodCount = random_range(5,15);
 mask_index = woodBirdSPR;
 for(var i = 0; i &lt; woodCount; i++){
@@ -245,8 +279,39 @@ while(p==false){
 var zx = random_range(48,room_width-48);
 var zy = random_range(48,room_width-48);
     if(!grid_place_meetingBirdSCR(zx,zy)){
-    //there isn't an enemy or a wall there;
-    //spawn an enemy
+
+    p = true;
+    instance_create(zx,zy,boneLadderBirdOBJ);
+    }
+}
+}
+
+//instantiate some bonemeal potions
+//instantiate some wood
+var bonemealCount = random_range(5,15);
+mask_index = potionBirdSPR;
+for(var i = 0; i &lt; bonemealCount; i++){
+var p = false;
+while(p==false){
+var zx = random_range(48,room_width-48);
+var zy = random_range(48,room_width-48);
+    if(!grid_place_meetingBirdSCR(zx,zy)){
+    p = true;
+    instance_create(zx,zy,boneMealBirdOBJ);
+    }
+}
+}
+
+
+//instantiate up to one bone ladder
+var ladderCount = irandom(1);
+mask_index = boneLadderBirdSPR;
+if(ladderCount ==0){
+var p = false;
+while(p==false){
+var zx = random_range(48,room_width-48);
+var zy = random_range(48,room_width-48);
+    if(!grid_place_meetingBirdSCR(zx,zy)){
     p = true;
     instance_create(zx,zy,woodBirdOBJ);
     }
@@ -257,8 +322,16 @@ var zy = random_range(48,room_width-48);
 
 
 
-
-
+//instantiate one key
+var p = false;
+while(p==false){
+var zx = random_range(48,room_width-48);
+var zy = random_range(48,room_width-48);
+   if(!grid_place_meetingBirdSCR(zx,zy)){
+   p = true;
+ instance_create(zx,zy,keyBirdOBJ);
+}
+}
 
 </string>
           </argument>

@@ -30,23 +30,47 @@
 instance_destroy();
 }
 
-
+level = 1;
 
 //Create the inventory
 // width 0 = Item Type; 1 = Item Name; 2 = Item Count; 3 = Healing Factor; 4 = Health Bonus; 5 = Damage Bonus;
 inventory = ds_list_create();  //Create the Inventory List
 inventoryMax = 10;
 //Inventory stored through floating invisible persistent objets
-
+myHP = 100;
 
 inventoryOpen = false;
+inventoryForced = false;
 
 
 
+///Set up the town grid-----------------------------------------------------------------
+townWidth = 14;
+townHeight = 14;
+townGrid = ds_grid_create(townWidth,townHeight);
 
-///gui effects
 
+//Create a border for the town grid, and fill the inside with floor
+for(var xx = 0; xx&lt; townWidth; xx++){
+    for(var yy = 0; yy &lt; townHeight; yy++){
+        if( xx == 0 || xx = townWidth-1 || yy == 0 || yy == townHeight-1){
+        townGrid[# xx,yy] = WALL;
+        }
+        else{
+        townGrid[# xx,yy] = FLOOR;
+        }
+    }
+}
 
+show_debug_message("Spawning Door");
+//select one place to be the dungeon entrance
+var door_x = irandom(townWidth-2)+1;
+townGrid[# door_x,0] = TOWN_DUNGEON_DOOR;
+
+//select one place to put the skulbastian's house
+var dify = clamp(irandom(4)+1,1,townHeight-1);
+var difx = clamp(irandom(6)-3,1,townWidth-1);
+townGrid[# door_x+difx, dify] = TOWN_SKULBASTIAN;
 
 </string>
           </argument>
@@ -81,12 +105,12 @@ inventoryOpen = !inventoryOpen;
 if(mouse_check_button_pressed(mb_left) &amp;&amp; inventoryOpen){
     //are we over a button?
     for(var i = 0; i &lt; ds_list_size(inventory);i++){
-        if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),592,56+32*i,630,72+32*i)){
+        if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),1240,112+64*i,1300,144+64*i)){
             if(inventory[| i].isUsable){
                 //It is usable and being clicked
                 //Use It!
                 with(inventory[| i]){
-                event_user(0);
+                event_user(1);
                 }
             }
         }
@@ -115,6 +139,7 @@ if(mouse_check_button_pressed(mb_left) &amp;&amp; inventoryOpen){
           <argument>
             <kind>1</kind>
             <string>ds_list_destroy(inventory);
+ds_grid_destroy(townGrid);
 </string>
           </argument>
         </arguments>
@@ -137,27 +162,39 @@ if(mouse_check_button_pressed(mb_left) &amp;&amp; inventoryOpen){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(inventoryOpen){
+            <string>draw_set_color(c_white)
+draw_set_valign(fa_top);
+draw_set_halign(fa_left);
+draw_set_font(fntButtons);
+draw_text(64,64,"Health:"+string(myHP));
+
+
+
+
+///draw_the_inventory
+if(inventoryOpen || inventoryForced){
+draw_set_halign(fa_center);
+draw_set_valign(fa_top);
+draw_set_color(c_black);
+draw_rectangle(880,60,1388,788,false);
+draw_set_color(c_white);
+draw_rectangle(880,60,1388,788,true);
+draw_text(1134,68,"INVENTORY");
 for(var i = 0; i&lt;ds_list_size(inventory);i++){
     //draw the inventory label
+    draw_set_halign(fa_left);
     draw_set_color(c_gray);
-     draw_rectangle(444,56+32*i,576,72+32*i,false);
-     draw_set_valign(fa_center);
+     draw_rectangle(888,112+64*i,1220,144+64*i,false);
      draw_set_color(c_white);
-     draw_text(448,64+32*i,inventory[| i].myName + " x" + string(inventory[| i].count));
+     draw_rectangle(888,112+64*i,1220,144+64*i,true);
+     draw_set_valign(fa_center);
+     if(inventory[| i] != noone){
+     draw_text(896,128+64*i,inventory[| i].myName + " x" + string(inventory[| i].count));
      
      //if usable, draw the use button
      if(inventory[|i].isUsable){
-        //this item is usable
-        if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),592,56+32*i,630,72+32*i)){
-        draw_set_color(c_dkgray)
-        } else{
-        draw_set_color(c_gray)
-        }
-     draw_rectangle(592,56+32*i,624,72+32*i,false)
-     draw_set_color(c_white)
-     draw_text(594,64+i*32,"USE");
-     
+     drawButtonBirdSCR(1240,112+64*i,1300,144+64*i,"USE");
+     }
      }
 }
 }

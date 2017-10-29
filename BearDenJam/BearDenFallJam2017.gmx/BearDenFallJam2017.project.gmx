@@ -3,9 +3,29 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="2" name="datafiles">
+    <datafile>
+      <name>BuildingFile.csv</name>
+      <exists>-1</exists>
+      <size>20</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>BuildingFile.csv</filename>
+    </datafile>
+  </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprite>sprites\monsterRatSPR</sprite>
     <sprites name="player">
       <sprites name="Walk">
         <sprite>sprites\playerWalkFrontBirdSPR</sprite>
@@ -19,37 +39,69 @@
         <sprite>sprites\playerIdleFrontBirdSPR</sprite>
         <sprite>sprites\playerIdleBackBirdSPR</sprite>
       </sprites>
+      <sprites name="items">
+        <sprite>sprites\woodBirdSPR</sprite>
+        <sprite>sprites\boneBirdSPR</sprite>
+        <sprite>sprites\stoneBirdSPR</sprite>
+        <sprite>sprites\potionBirdSPR</sprite>
+        <sprite>sprites\keyBirdSPR</sprite>
+        <sprite>sprites\boneLadderBirdSPR</sprite>
+      </sprites>
     </sprites>
-    <sprite>sprites\monsterRatSPR</sprite>
-    <sprite>sprites\boneBirdSPR</sprite>
-    <sprite>sprites\stoneBirdSPR</sprite>
-    <sprite>sprites\woodBirdSPR</sprite>
-    <sprite>sprites\potionBirdSPR</sprite>
+    <sprites name="DungeonStuff">
+      <sprite>sprites\dungeonDoorBirdSPR</sprite>
+      <sprite>sprites\staircaseBirdSPR</sprite>
+    </sprites>
+    <sprites name="NPCS">
+      <sprite>sprites\skulbastianBirdSPR</sprite>
+    </sprites>
+    <sprites name="Houses">
+      <sprite>sprites\skulbastianHouseBirdSPR</sprite>
+      <sprite>sprites\houseBirdSPR</sprite>
+      <sprite>sprites\townDungeonDoorBirdSPR</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
+    <background>background\background2</background>
     <background>background\floorTileBirdBKG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\mazeMoveBirdSCR.gml</script>
+    <script>scripts\townMoveBirdSCR.gml</script>
     <script>scripts\grid_place_meetingBirdSCR.gml</script>
+    <script>scripts\town_place_meetingBirdSCR.gml</script>
     <scripts name="InventoryScripts">
       <script>scripts\inventoryAddBirdSCR.gml</script>
+      <script>scripts\inventoryRemoveBirdSCR.gml</script>
     </scripts>
     <script>scripts\monster_pathingRatSCR.gml</script>
+    <scripts name="dialogue">
+      <script>scripts\drawTextBoxBirdSCR.gml</script>
+      <script>scripts\drawButtonBirdSCR.gml</script>
+    </scripts>
+    <script>scripts\csv_to_ds_grid.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt</font>
+    <font>fonts\fntButtons</font>
+  </fonts>
   <objects name="objects">
     <object>objects\levelBirdOBJ</object>
     <object>objects\playerBirdOBJ</object>
+    <object>objects\playerTownBirdOBJ</object>
     <object>objects\monsterRatOBJ</object>
     <object>objects\monsterparrentOBJ</object>
     <object>objects\controllerBirdOBJ</object>
     <objects name="ResourceItems">
       <object>objects\boneBirdOBJ</object>
+      <object>objects\boneLadderBirdOBJ</object>
       <object>objects\stoneBirdOBJ</object>
       <object>objects\woodBirdOBJ</object>
       <object>objects\boneMealBirdOBJ</object>
+      <object>objects\keyBirdOBJ</object>
+      <object>objects\dropItemOBJ</object>
     </objects>
     <objects name="Item">
       <object>objects\rInventoryItemBirdOBJ</object>
@@ -57,19 +109,46 @@
       <object>objects\rStoneItemBirdOBJ</object>
       <object>objects\rWoodItemBirdOBJ</object>
       <object>objects\cBoneMealItemBirdOBJ</object>
+      <object>objects\cBoneLadderItemBirdOBJ</object>
+      <object>objects\oKeyItemBirdOBJ</object>
     </objects>
+
     <object>objects\monsterRatattackOBJ</object>
+
+    <object>objects\monsterparrentOBJ</object>
+    <object>objects\doorBirdOBJ</object>
+    <object>objects\staircaseBirdOBJ</object>
+    <object>objects\fadeBirdOBJ</object>
+    <objects name="Town">
+      <objects name="Buildings">
+        <object>objects\skulbastianHouseBirdOBJ</object>
+        <object>objects\townDungeonDoorBirdOBJ</object>
+        <object>objects\houseBirdOBJ</object>
+      </objects>
+      <object>objects\townBirdOBJ</object>
+      <objects name="NPCS">
+        <object>objects\skulbastianBirdOBJ</object>
+      </objects>
+    </objects>
+    <object>objects\textBirdOBJ</object>
+
   </objects>
   <rooms name="rooms">
+    <room>rooms\townBirdRoom</room>
     <room>rooms\testBirdRM</room>
   </rooms>
-  <constants number="6">
+  <constants number="11">
     <constant name="CELL_WIDTH">64</constant>
-    <constant name="CELL_HEIGHT">64</constant>
+    <constant name="CELL_HEIGHT">96</constant>
     <constant name="FLOOR">-5</constant>
     <constant name="WALL">-6</constant>
     <constant name="VOID">-7</constant>
     <constant name="P_WALK">-22</constant>
+    <constant name="TOWN_DUNGEON_DOOR">10012</constant>
+    <constant name="TOWN_SKULBASTIAN">10013</constant>
+    <constant name="TOWN_HOUSE">10014</constant>
+    <constant name="P_STATE_WALK">901</constant>
+    <constant name="P_STATE_MENU">902</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
