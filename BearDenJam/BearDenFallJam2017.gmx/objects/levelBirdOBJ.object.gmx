@@ -36,6 +36,7 @@ var height = room_height div CELL_HEIGHT;
 
 // Create the grid
 grid = ds_grid_create(width, height);
+mpGrid = mp_grid_create(0,0,width,height,CELL_WIDTH,CELL_HEIGHT);
 
 // pathfinding grid (rat)
 grid_path = mp_grid_create(0, 0, width, height, CELL_WIDTH, CELL_HEIGHT);
@@ -80,6 +81,7 @@ repeat (1000) {
     cx = clamp(cx, 1, width-2);
     cy = clamp(cy, 1, height-2);
 }
+/// add hostiles (rat)
     // add hostiles (rat)
     var zCount = random_range(15,25);
     for(var i = 0; i &lt; zCount; i++){
@@ -205,6 +207,54 @@ for (var yy = 0; yy &lt; height*2; yy++) {
 
 
 
+//instantiate a bunch of items
+var boneCount = random_range(5,15);
+mask_index = boneBirdSPR;
+for(var i = 0; i &lt; boneCount; i++){
+var p = false;
+while(p==false){
+var zx = random_range(48,room_width-48);
+var zy = random_range(48,room_width-48);
+    if(!grid_place_meetingBirdSCR(zx,zy)){
+    //there isn't an enemy or a wall there;
+    //spawn an enemy
+    p = true;
+    instance_create(zx,zy,boneBirdOBJ);
+    }
+}
+}
+
+var stoneCount = random_range(5,15);
+mask_index = stoneBirdSPR;
+for(var i = 0; i &lt; stoneCount; i++){
+var p = false;
+while(p==false){
+var zx = random_range(48,room_width-48);
+var zy = random_range(48,room_width-48);
+    if(!grid_place_meetingBirdSCR(zx,zy)){
+    //there isn't an enemy or a wall there;
+    //spawn an enemy
+    p = true;
+    instance_create(zx,zy,stoneBirdOBJ);
+    }
+}
+}
+
+var woodCount = random_range(5,15);
+mask_index = woodBirdSPR;
+for(var i = 0; i &lt; woodCount; i++){
+var p = false;
+while(p==false){
+var zx = random_range(48,room_width-48);
+var zy = random_range(48,room_width-48);
+    if(!grid_place_meetingBirdSCR(zx,zy)){
+    //there isn't an enemy or a wall there;
+    //spawn an enemy
+    p = true;
+    instance_create(zx,zy,woodBirdOBJ);
+    }
+}
+}
 
 
 
