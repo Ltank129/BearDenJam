@@ -87,7 +87,7 @@ repeat (1000) {
     while(p==false){
     var zx = random_range(96,room_width-96);
     var zy = random_range(96,room_width-96);
-    if(!grid_place_meetingBirdSCR(zx,zy) &amp;&amp; !place_meeting(zx,zy,enemyOBJ)){
+    if(!grid_place_meetingBirdSCR(zx,zy) &amp;&amp; !place_meeting(zx,zy,monsterRatOBJ)){
     //there isn't an enemy or a wall there;
     //spawn an enemy
     p = true;
@@ -283,7 +283,7 @@ var zy = random_range(48,room_width-48);
           <argument>
             <kind>1</kind>
             <string>ds_grid_destroy(grid);
-mp_grid_destroy(mpGrid);
+mp_grid_destroy(grid_path);
 </string>
           </argument>
         </arguments>
