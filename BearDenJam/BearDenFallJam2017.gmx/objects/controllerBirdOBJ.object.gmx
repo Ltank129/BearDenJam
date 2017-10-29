@@ -40,7 +40,7 @@ inventoryMax = 10;
 myHP = 100;
 
 inventoryOpen = false;
-
+inventoryForced = false;
 
 
 
@@ -105,7 +105,7 @@ inventoryOpen = !inventoryOpen;
 if(mouse_check_button_pressed(mb_left) &amp;&amp; inventoryOpen){
     //are we over a button?
     for(var i = 0; i &lt; ds_list_size(inventory);i++){
-        if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),570,56+32*i,600,72+32*i)){
+        if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),1240,112+64*i,1300,144+64*i)){
             if(inventory[| i].isUsable){
                 //It is usable and being clicked
                 //Use It!
@@ -165,30 +165,35 @@ ds_grid_destroy(townGrid);
             <string>draw_set_color(c_white)
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
-draw_set_font(fnt);
-draw_text(32,32,"Health:"+string(myHP));
-draw_text(32,96,"Level " +string(level));
-if(inventoryOpen){
+draw_set_font(fntButtons);
+draw_text(64,64,"Health:"+string(myHP));
+
+
+
+
+///draw_the_inventory
+if(inventoryOpen || inventoryForced){
 draw_set_halign(fa_center);
+draw_set_valign(fa_top);
 draw_set_color(c_black);
-draw_rectangle(440,30,628,394,false);
+draw_rectangle(880,60,1388,788,false);
 draw_set_color(c_white);
-draw_rectangle(440,30,628,394,true);
-draw_text(534,32,"INVENTORY");
+draw_rectangle(880,60,1388,788,true);
+draw_text(1134,68,"INVENTORY");
 for(var i = 0; i&lt;ds_list_size(inventory);i++){
     //draw the inventory label
     draw_set_halign(fa_left);
     draw_set_color(c_gray);
-     draw_rectangle(444,56+32*i,560,72+32*i,false);
+     draw_rectangle(888,112+64*i,1220,144+64*i,false);
      draw_set_color(c_white);
-     draw_rectangle(444,56+32*i,560,72+32*i,true);
+     draw_rectangle(888,112+64*i,1220,144+64*i,true);
      draw_set_valign(fa_center);
      if(inventory[| i] != noone){
-     draw_text(448,64+32*i,inventory[| i].myName + " x" + string(inventory[| i].count));
+     draw_text(896,128+64*i,inventory[| i].myName + " x" + string(inventory[| i].count));
      
      //if usable, draw the use button
      if(inventory[|i].isUsable){
-     drawButtonBirdSCR(570,56+32*i,600,72+32*i,"USE");
+     drawButtonBirdSCR(1240,112+64*i,1300,144+64*i,"USE");
      }
      }
 }

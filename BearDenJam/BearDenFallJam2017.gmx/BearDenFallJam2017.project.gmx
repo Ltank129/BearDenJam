@@ -3,6 +3,25 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="2" name="datafiles">
+    <datafile>
+      <name>BuildingFile.csv</name>
+      <exists>-1</exists>
+      <size>20</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>BuildingFile.csv</filename>
+    </datafile>
+  </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -38,6 +57,7 @@
     </sprites>
     <sprites name="Houses">
       <sprite>sprites\skulbastianHouseBirdSPR</sprite>
+      <sprite>sprites\houseBirdSPR</sprite>
       <sprite>sprites\townDungeonDoorBirdSPR</sprite>
     </sprites>
   </sprites>
@@ -61,9 +81,11 @@
       <script>scripts\drawTextBoxBirdSCR.gml</script>
       <script>scripts\drawButtonBirdSCR.gml</script>
     </scripts>
+    <script>scripts\csv_to_ds_grid.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt</font>
+    <font>fonts\fntButtons</font>
   </fonts>
   <objects name="objects">
     <object>objects\levelBirdOBJ</object>
@@ -97,6 +119,7 @@
       <objects name="Buildings">
         <object>objects\skulbastianHouseBirdOBJ</object>
         <object>objects\townDungeonDoorBirdOBJ</object>
+        <object>objects\houseBirdOBJ</object>
       </objects>
       <object>objects\townBirdOBJ</object>
       <objects name="NPCS">
@@ -109,7 +132,7 @@
     <room>rooms\townBirdRoom</room>
     <room>rooms\testBirdRM</room>
   </rooms>
-  <constants number="10">
+  <constants number="11">
     <constant name="CELL_WIDTH">64</constant>
     <constant name="CELL_HEIGHT">96</constant>
     <constant name="FLOOR">-5</constant>
@@ -118,6 +141,7 @@
     <constant name="P_WALK">-22</constant>
     <constant name="TOWN_DUNGEON_DOOR">10012</constant>
     <constant name="TOWN_SKULBASTIAN">10013</constant>
+    <constant name="TOWN_HOUSE">10014</constant>
     <constant name="P_STATE_WALK">901</constant>
     <constant name="P_STATE_MENU">902</constant>
   </constants>
