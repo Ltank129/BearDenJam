@@ -35,6 +35,44 @@ dialogue[2] = "On it, Boss!";
 
 
 myText = noone;
+show_debug_message("CREATING GRID");
+buildGrid = ds_grid_create(6,1);
+show_debug_message("Loading Grid");
+buildGrid = csv_to_ds_grid("BuildingFile.csv",false)
+
+//test unlocks
+for(var i =0; i &lt; 1; i++){
+if(instance_number(houseBirdOBJ) &gt;= buildGrid[# 4,i]){  //if we have built more houses than prereqd
+    buildGrid[# 5,i] = 1;   //set it so that the building can be unlocked
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(myText){
+instance_destroy();
+}
+myText = noone;
+isTalking = -1;
 </string>
           </argument>
         </arguments>
@@ -59,13 +97,14 @@ myText = noone;
             <kind>1</kind>
             <string>if(instance_exists(playerTownBirdOBJ)){
 
-    if(isTalking =-1){
-    if(point_distance(x,y,playerTownBirdOBJ.x,playerTownBirdOBJ.y) &lt; 32){
-    
-    if(myText == noone){
-    myText = drawTextBoxBirdSCR("Press E to Talk",1,x,y-48);
-    }
-    //the player is close enough;
+    switch(isTalking){
+case -1:   
+        if(point_distance(x,y,playerTownBirdOBJ.x,playerTownBirdOBJ.y) &lt; 32){
+        
+        if(myText == noone){
+         myText = drawTextBoxBirdSCR("Press E to Talk",1,x,y-48);
+        }
+        //the player is close enough;
         if(keyboard_check_pressed(ord("E"))){
         //start the dialogue
             isTalking = 0;
@@ -74,9 +113,109 @@ myText = noone;
             instance_destroy();
             }
             myText = noone;
+            }
+            }else if(myText!=noone){
+            with(myText) instance_destroy();
+            myText = noone;
+            } 
+            break;
+        
+case 0:         //Introduction
+        if(myText == noone){
+        myText = drawTextBoxBirdSCR("Howdy Boss. What do you need?",1,x,y-48);
         }
+        if(myText.time &gt;= myText.text_length){
+            //We have finished talking. Check for button pressed
+            if(mouse_check_button_pressed(mb_left)){
+            if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),320,704,1124,752)){
+                //I'd like to build something
+                //open build menu
+                }
+            if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),320,768,1124,816)){
+                 //Nothing Now
+                 isTalking = 2;
+                 with(myText){
+                 instance_destroy();
+                }
+                alarm[0] = room_speed * 4;
+                myText = noone;
+                playerTownBirdOBJ.state = P_STATE_WALK;  
+                }  
+            }
+        }
+        break;
+
+case 1:
+    //Do some building stuff
+    break;
+
+case 2:
+        if(myText == noone){
+        myText = drawTextBoxBirdSCR("Okay, you tell me if you need anything!",1,x,y-48);
+        }    
     }
-    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_grid_destroy(buildGrid);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+switch(isTalking){
+case 0:
+        //if the text is finished
+        if(myText!= noone){
+            if(myText.time &gt;= myText.text_length){
+            drawButtonBirdSCR(320,704,1124,752,"I'd like to build something!");
+            drawButtonBirdSCR(320,768,1124,816,"Nothing now.");
+            
+            
+            }
+        }
+        break;
+
+
+
 }
 </string>
           </argument>

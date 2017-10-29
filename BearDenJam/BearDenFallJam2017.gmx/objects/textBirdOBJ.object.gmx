@@ -34,7 +34,7 @@ depth = depth-instance_number(textBirdOBJ);
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -82,16 +82,21 @@ print = string_copy(text,0,time);
 draw_set_alpha(alpha)
 if(alpha&lt;1) alpha+=spd/10; else alpha =1;
 
+scalex = (view_wport[0] / view_wview[0]);
+scaley = ( view_hport[0] / view_hview[0]);
+
+viewx = (x - view_xview[0]) * scalex
+viewy = (y - view_yview[0]) * scaley
 draw_set_font(font)
 draw_set_color(c_gray)
-draw_rectangle(x,y,x+boxwidth,y+boxheight,0);
+draw_rectangle(viewx,viewy,viewx+boxwidth,viewy+boxheight,0);
 draw_set_color(c_black);
-draw_rectangle(x,y,x+boxwidth,y+boxheight,1);
+draw_rectangle(viewx,viewy,viewx+boxwidth,viewy+boxheight,1);
 
 draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_ext(x+padding,y+padding,print,font_size+(font_size/2),maxLength)
+draw_text_ext(viewx+padding,viewy+padding,print,font_size+(font_size/2),maxLength)
 draw_set_alpha(1);
 </string>
           </argument>

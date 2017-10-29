@@ -16,7 +16,8 @@ if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),bx1,by1,bx2,by2)
     draw_rectangle(bx1,by1,bx2,by2,true)
      draw_set_halign(fa_center)
      draw_set_valign(fa_center);
-     draw_text(mean(bx1,bx2),mean(by1,by2),"USE")
+     draw_set_font(fntButtons);
+     draw_text(mean(bx1,bx2),mean(by1,by2),str)
      draw_set_halign(fa_left)
      draw_set_valign(fa_top)
      
