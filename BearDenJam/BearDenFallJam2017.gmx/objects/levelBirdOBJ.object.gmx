@@ -65,6 +65,7 @@ repeat (1000) {
     // Place a floor tile at the controller position
     grid[# cx, cy] = FLOOR;
     
+    
     // Randomize the direction of the controller
     if (irandom(odds) == odds) {
         cdir = irandom(3);
@@ -81,6 +82,7 @@ repeat (1000) {
     cy = clamp(cy, 1, height-2);
 }
 /// add hostiles (rat)
+    // add hostiles (rat)
     var zCount = random_range(15,25);
     for(var i = 0; i &lt; zCount; i++){
     var p = false;
@@ -97,6 +99,8 @@ repeat (1000) {
 } 
     
 }
+    
+    
 // Add the walls
 for (var yy = 1; yy &lt; height-1; yy++) {
     for (var xx = 1; xx &lt; width-1; xx++) {
@@ -106,7 +110,7 @@ for (var yy = 1; yy &lt; height-1; yy++) {
             if (grid[# xx-1, yy] != FLOOR) grid[# xx-1, yy] = WALL;
             if (grid[# xx, yy+1] != FLOOR) grid[# xx, yy+1] = WALL;
             if (grid[# xx, yy-1] != FLOOR) grid[# xx, yy-1] = WALL;
-        }
+       }
     }
 }
 
@@ -116,13 +120,12 @@ for (var yy = 0; yy &lt; height; yy++) {
         if (grid[# xx, yy] == FLOOR) {
             // Draw the floor
             tile_add(floorTileBirdBKG, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0)
-        }
-        ///RAT PATH FINDING
-        else{
-        mp_grid_add_cell(grid_path,xx,yy);
-        }
-        
-    }
+  } 
+  ///RAT PATH FINDING
+  else { 
+  mp_grid_add_cell(grid_path, xx, yy);
+   }
+    } 
 }
 
 //////////////////////////////////////////////////////////////////
@@ -257,9 +260,6 @@ var zy = random_range(48,room_width-48);
 
 
 
-
-
-
 </string>
           </argument>
         </arguments>
@@ -283,7 +283,14 @@ var zy = random_range(48,room_width-48);
           <argument>
             <kind>1</kind>
             <string>ds_grid_destroy(grid);
+<<<<<<< HEAD
 mp_grid_destroy(grid_path);
+=======
+
+/// Rat cleanup
+mp_grid_destroy(grid_path);
+
+>>>>>>> master
 </string>
           </argument>
         </arguments>
