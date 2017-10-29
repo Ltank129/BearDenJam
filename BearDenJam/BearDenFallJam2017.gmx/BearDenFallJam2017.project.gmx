@@ -33,6 +33,13 @@
       <sprite>sprites\dungeonDoorBirdSPR</sprite>
       <sprite>sprites\staircaseBirdSPR</sprite>
     </sprites>
+    <sprites name="NPCS">
+      <sprite>sprites\skulbastianBirdSPR</sprite>
+    </sprites>
+    <sprites name="Houses">
+      <sprite>sprites\skulbastianHouseBirdSPR</sprite>
+      <sprite>sprites\townDungeonDoorBirdSPR</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -42,16 +49,26 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\mazeMoveBirdSCR.gml</script>
+    <script>scripts\townMoveBirdSCR.gml</script>
     <script>scripts\grid_place_meetingBirdSCR.gml</script>
+    <script>scripts\town_place_meetingBirdSCR.gml</script>
     <scripts name="InventoryScripts">
       <script>scripts\inventoryAddBirdSCR.gml</script>
       <script>scripts\inventoryRemoveBirdSCR.gml</script>
     </scripts>
     <script>scripts\monster_pathingRatSCR.gml</script>
+    <scripts name="dialogue">
+      <script>scripts\drawTextBoxBirdSCR.gml</script>
+      <script>scripts\drawButtonBirdSCR.gml</script>
+    </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt</font>
+  </fonts>
   <objects name="objects">
     <object>objects\levelBirdOBJ</object>
     <object>objects\playerBirdOBJ</object>
+    <object>objects\playerTownBirdOBJ</object>
     <object>objects\monsterRatOBJ</object>
     <object>objects\controllerBirdOBJ</object>
     <objects name="ResourceItems">
@@ -76,17 +93,33 @@
     <object>objects\doorBirdOBJ</object>
     <object>objects\staircaseBirdOBJ</object>
     <object>objects\fadeBirdOBJ</object>
+    <objects name="Town">
+      <objects name="Buildings">
+        <object>objects\skulbastianHouseBirdOBJ</object>
+        <object>objects\townDungeonDoorBirdOBJ</object>
+      </objects>
+      <object>objects\townBirdOBJ</object>
+      <objects name="NPCS">
+        <object>objects\skulbastianBirdOBJ</object>
+      </objects>
+    </objects>
+    <object>objects\textBirdOBJ</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\townBirdRoom</room>
     <room>rooms\testBirdRM</room>
   </rooms>
-  <constants number="6">
+  <constants number="10">
     <constant name="CELL_WIDTH">64</constant>
     <constant name="CELL_HEIGHT">96</constant>
     <constant name="FLOOR">-5</constant>
     <constant name="WALL">-6</constant>
     <constant name="VOID">-7</constant>
     <constant name="P_WALK">-22</constant>
+    <constant name="TOWN_DUNGEON_DOOR">10012</constant>
+    <constant name="TOWN_SKULBASTIAN">10013</constant>
+    <constant name="P_STATE_WALK">901</constant>
+    <constant name="P_STATE_MENU">902</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

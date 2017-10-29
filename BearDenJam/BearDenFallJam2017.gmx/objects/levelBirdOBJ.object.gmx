@@ -288,7 +288,7 @@ var zy = random_range(48,room_width-48);
 
 //instantiate some bonemeal potions
 //instantiate some wood
-var bonemealCount = random_range(0,3);
+var bonemealCount = random_range(5,15);
 mask_index = potionBirdSPR;
 for(var i = 0; i &lt; bonemealCount; i++){
 var p = false;
