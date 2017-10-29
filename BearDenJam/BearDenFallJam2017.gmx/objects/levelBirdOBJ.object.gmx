@@ -185,7 +185,7 @@ for (var yy = 0; yy &lt; height*2; yy++) {
 
 
 //instantiate a bunch of items
-var boneCount = random_range(10,25);
+var boneCount = random_range(5,15);
 mask_index = boneBirdSPR;
 for(var i = 0; i &lt; boneCount; i++){
 var p = false;
@@ -197,6 +197,38 @@ var zy = random_range(48,room_width-48);
     //spawn an enemy
     p = true;
     instance_create(zx,zy,boneBirdOBJ);
+    }
+}
+}
+
+var stoneCount = random_range(5,15);
+mask_index = stoneBirdSPR;
+for(var i = 0; i &lt; stoneCount; i++){
+var p = false;
+while(p==false){
+var zx = random_range(48,room_width-48);
+var zy = random_range(48,room_width-48);
+    if(!grid_place_meetingBirdSCR(zx,zy)){
+    //there isn't an enemy or a wall there;
+    //spawn an enemy
+    p = true;
+    instance_create(zx,zy,stoneBirdOBJ);
+    }
+}
+}
+
+var woodCount = random_range(5,15);
+mask_index = woodBirdSPR;
+for(var i = 0; i &lt; woodCount; i++){
+var p = false;
+while(p==false){
+var zx = random_range(48,room_width-48);
+var zy = random_range(48,room_width-48);
+    if(!grid_place_meetingBirdSCR(zx,zy)){
+    //there isn't an enemy or a wall there;
+    //spawn an enemy
+    p = true;
+    instance_create(zx,zy,woodBirdOBJ);
     }
 }
 }

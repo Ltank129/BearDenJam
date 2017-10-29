@@ -45,7 +45,7 @@ inventoryOpen = false;
 
 
 ///gui effects
-global.display_scale = display_get_gui_width/view_wview[view_current];
+
 
 
 </string>
@@ -72,6 +72,25 @@ global.display_scale = display_get_gui_width/view_wview[view_current];
             <kind>1</kind>
             <string>if(keyboard_check_pressed(ord("I"))){
 inventoryOpen = !inventoryOpen;
+}
+
+
+
+
+
+if(mouse_check_button_pressed(mb_left) &amp;&amp; inventoryOpen){
+    //are we over a button?
+    for(var i = 0; i &lt; ds_list_size(inventory);i++){
+        if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),592,56+32*i,630,72+32*i)){
+            if(inventory[| i].isUsable){
+                //It is usable and being clicked
+                //Use It!
+                with(inventory[| i]){
+                event_user(0);
+                }
+            }
+        }
+    }
 }
 </string>
           </argument>
@@ -121,12 +140,25 @@ inventoryOpen = !inventoryOpen;
             <string>if(inventoryOpen){
 for(var i = 0; i&lt;ds_list_size(inventory);i++){
     //draw the inventory label
-    draw_set_color(c_blue);
-     draw_rectangle(476,56+32*i,608,72+32*i,false);
+    draw_set_color(c_gray);
+     draw_rectangle(444,56+32*i,576,72+32*i,false);
      draw_set_valign(fa_center);
      draw_set_color(c_white);
-     draw_text(480,64+32*i,inventory[| i].myName + " x" + string(inventory[| i].count));
-    
+     draw_text(448,64+32*i,inventory[| i].myName + " x" + string(inventory[| i].count));
+     
+     //if usable, draw the use button
+     if(inventory[|i].isUsable){
+        //this item is usable
+        if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),592,56+32*i,630,72+32*i)){
+        draw_set_color(c_dkgray)
+        } else{
+        draw_set_color(c_gray)
+        }
+     draw_rectangle(592,56+32*i,624,72+32*i,false)
+     draw_set_color(c_white)
+     draw_text(594,64+i*32,"USE");
+     
+     }
 }
 }
 </string>

@@ -24,6 +24,7 @@
     <sprite>sprites\boneBirdSPR</sprite>
     <sprite>sprites\stoneBirdSPR</sprite>
     <sprite>sprites\woodBirdSPR</sprite>
+    <sprite>sprites\potionBirdSPR</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -45,12 +46,15 @@
     <objects name="ResourceItems">
       <object>objects\boneBirdOBJ</object>
       <object>objects\stoneBirdOBJ</object>
+      <object>objects\woodBirdOBJ</object>
+      <object>objects\boneMealBirdOBJ</object>
     </objects>
     <objects name="Item">
       <object>objects\rInventoryItemBirdOBJ</object>
       <object>objects\rBoneItemBirdOBJ</object>
       <object>objects\rStoneItemBirdOBJ</object>
-      <object>objects\rBoodItemBirdOBJ</object>
+      <object>objects\rWoodItemBirdOBJ</object>
+      <object>objects\cBoneMealItemBirdOBJ</object>
     </objects>
   </objects>
   <rooms name="rooms">
