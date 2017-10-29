@@ -151,51 +151,51 @@ for (var yy = 0; yy &lt; height*2; yy++) {
             
             if (right) {
                 if (bottom) {
-                    tile_add(wallTilesBirdBKG, tw*4, th*1, tw, th, tx+tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*4, th*1, tw, th, tx+tw, ty, -ty-8);
                 } else if (top) {
                     if (top_right) {
-                        tile_add(wallTilesBirdBKG, tw*4, th*0, tw, th, tx+tw, ty-th, -ty);
+                        tile_add(wallTilesBirdBKG, tw*4, th*0, tw, th, tx+tw, ty-th, -ty-8);
                     } else {
-                        tile_add(wallTilesBirdBKG, tw*3, th*0, tw, th, tx, ty-th, -ty);
+                        tile_add(wallTilesBirdBKG, tw*3, th*0, tw, th, tx, ty-th, -ty-8);
                     }
-                    tile_add(wallTilesBirdBKG, tw*0, th*1, tw, th, tx+tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*0, th*1, tw, th, tx+tw, ty, -ty-8);
                 } else {
-                    tile_add(wallTilesBirdBKG, tw*0, th*1, tw, th, tx+tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*0, th*1, tw, th, tx+tw, ty, -ty-8);
                 }
             }
             
             if (left) {
                 if (bottom) {
-                    tile_add(wallTilesBirdBKG, tw*3, th*1, tw, th, tx-tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*3, th*1, tw, th, tx-tw, ty, -ty-8);
                 } else if (top) {
                     if (top_left) {
-                        tile_add(wallTilesBirdBKG, tw*3, th*0, tw, th, tx-tw, ty-th, -ty);
+                        tile_add(wallTilesBirdBKG, tw*3, th*0, tw, th, tx-tw, ty-th, -ty-8);
                     } else {
-                        tile_add(wallTilesBirdBKG, tw*4, th*0, tw, th, tx, ty-th, -ty);
+                        tile_add(wallTilesBirdBKG, tw*4, th*0, tw, th, tx, ty-th, -ty-8);
                     }
-                    tile_add(wallTilesBirdBKG, tw*2, th*1, tw, th, tx-tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*2, th*1, tw, th, tx-tw, ty, -ty-8);
                 } else {
-                    tile_add(wallTilesBirdBKG, tw*2, th*1, tw, th, tx-tw, ty, -ty);
+                    tile_add(wallTilesBirdBKG, tw*2, th*1, tw, th, tx-tw, ty, -ty-8);
                 }
             }
             
             if (top) {
                 if (!top_right) {
-                    tile_add(wallTilesBirdBKG, tw*2, th*2, tw, th, tx, ty-th, -ty);
+                    tile_add(wallTilesBirdBKG, tw*2, th*2, tw, th, tx, ty-th, -ty-8);
                 } else if (!top_left) {
-                    tile_add(wallTilesBirdBKG, tw*0, th*2, tw, th, tx, ty-th, -ty);
+                    tile_add(wallTilesBirdBKG, tw*0, th*2, tw, th, tx, ty-th, -ty-8);
                 } else {
-                    tile_add(wallTilesBirdBKG, tw*1, th*2, tw, th, tx, ty-th, -ty);
+                    tile_add(wallTilesBirdBKG, tw*1, th*2, tw, th, tx, ty-th, -ty-8);
                 }
             }
             
             if (bottom) {
                 if (!bottom_right) {
-                    tile_add(wallTilesBirdBKG, tw*2, th*0, tw, th, tx, ty, -ty-tw);
+                    tile_add(wallTilesBirdBKG, tw*2, th*0, tw, th, tx, ty, -ty-tw-8);
                 } else if (!bottom_left) {
-                    tile_add(wallTilesBirdBKG, tw*0, th*0, tw, th, tx, ty, -ty-tw);
+                    tile_add(wallTilesBirdBKG, tw*0, th*0, tw, th, tx, ty, -ty-tw-8);
                 } else {
-                    tile_add(wallTilesBirdBKG, tw*1, th*0, tw, th, tx, ty, -ty-tw);
+                    tile_add(wallTilesBirdBKG, tw*1, th*0, tw, th, tx, ty, -ty-tw-8);
                 }
             }
         }

@@ -25,6 +25,10 @@
     <sprite>sprites\stoneBirdSPR</sprite>
     <sprite>sprites\woodBirdSPR</sprite>
     <sprite>sprites\potionBirdSPR</sprite>
+    <sprite>sprites\keyBirdSPR</sprite>
+    <sprites name="DungeonStuff">
+      <sprite>sprites\dungeonDoorBirdSPR</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -49,6 +53,7 @@
       <object>objects\stoneBirdOBJ</object>
       <object>objects\woodBirdOBJ</object>
       <object>objects\boneMealBirdOBJ</object>
+      <object>objects\keyBirdOBJ</object>
     </objects>
     <objects name="Item">
       <object>objects\rInventoryItemBirdOBJ</object>
@@ -56,6 +61,7 @@
       <object>objects\rStoneItemBirdOBJ</object>
       <object>objects\rWoodItemBirdOBJ</object>
       <object>objects\cBoneMealItemBirdOBJ</object>
+      <object>objects\oKeyItemBirdOBJ</object>
     </objects>
     <object>objects\monsterparrentOBJ</object>
   </objects>
@@ -64,7 +70,7 @@
   </rooms>
   <constants number="6">
     <constant name="CELL_WIDTH">64</constant>
-    <constant name="CELL_HEIGHT">64</constant>
+    <constant name="CELL_HEIGHT">96</constant>
     <constant name="FLOOR">-5</constant>
     <constant name="WALL">-6</constant>
     <constant name="VOID">-7</constant>
