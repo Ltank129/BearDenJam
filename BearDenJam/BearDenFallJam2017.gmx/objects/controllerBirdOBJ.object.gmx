@@ -30,6 +30,7 @@
 instance_destroy();
 }
 
+level = 1;
 
 //Create the inventory
 // width 0 = Item Type; 1 = Item Name; 2 = Item Count; 3 = Healing Factor; 4 = Health Bonus; 5 = Damage Bonus;
@@ -140,7 +141,7 @@ if(mouse_check_button_pressed(mb_left) &amp;&amp; inventoryOpen){
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
 draw_text(32,32,"Health:"+string(myHP));
-
+draw_text(32,96,"Level " +string(level));
 if(inventoryOpen){
 draw_set_halign(fa_center);
 draw_set_color(c_black);
@@ -170,8 +171,6 @@ for(var i = 0; i&lt;ds_list_size(inventory);i++){
      draw_text(594,64+i*32,"USE");
      
      }
-     } else{
-     show_error("Null Object",true)
      }
 }
 }

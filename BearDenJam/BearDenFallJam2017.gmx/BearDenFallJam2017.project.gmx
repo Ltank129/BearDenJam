@@ -6,6 +6,7 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprite>sprites\monsterRatSPR</sprite>
     <sprites name="player">
       <sprites name="Walk">
         <sprite>sprites\playerWalkFrontBirdSPR</sprite>
@@ -19,17 +20,18 @@
         <sprite>sprites\playerIdleFrontBirdSPR</sprite>
         <sprite>sprites\playerIdleBackBirdSPR</sprite>
       </sprites>
+      <sprites name="items">
+        <sprite>sprites\woodBirdSPR</sprite>
+        <sprite>sprites\boneBirdSPR</sprite>
+        <sprite>sprites\stoneBirdSPR</sprite>
+        <sprite>sprites\potionBirdSPR</sprite>
+        <sprite>sprites\keyBirdSPR</sprite>
+        <sprite>sprites\boneLadderBirdSPR</sprite>
+      </sprites>
     </sprites>
-    <sprite>sprites\monsterRatSPR</sprite>
-    <sprite>sprites\boneBirdSPR</sprite>
-    <sprite>sprites\stoneBirdSPR</sprite>
-    <sprite>sprites\woodBirdSPR</sprite>
-    <sprite>sprites\potionBirdSPR</sprite>
-    <sprite>sprites\keyBirdSPR</sprite>
     <sprites name="DungeonStuff">
       <sprite>sprites\dungeonDoorBirdSPR</sprite>
     </sprites>
-    <sprite>sprites\sprite15</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -68,6 +70,7 @@
     </objects>
     <object>objects\monsterparrentOBJ</object>
     <object>objects\doorBirdOBJ</object>
+    <object>objects\fadeBirdOBJ</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\testBirdRM</room>
