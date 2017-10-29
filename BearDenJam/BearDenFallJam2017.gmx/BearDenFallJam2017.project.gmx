@@ -43,6 +43,7 @@
     <object>objects\levelBirdOBJ</object>
     <object>objects\playerBirdOBJ</object>
     <object>objects\monsterRatOBJ</object>
+    <object>objects\monsterparrentOBJ</object>
     <object>objects\controllerBirdOBJ</object>
     <objects name="ResourceItems">
       <object>objects\boneBirdOBJ</object>
@@ -57,7 +58,7 @@
       <object>objects\rWoodItemBirdOBJ</object>
       <object>objects\cBoneMealItemBirdOBJ</object>
     </objects>
-    <object>objects\monsterparrentOBJ</object>
+    <object>objects\monsterRatattackOBJ</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\testBirdRM</room>
