@@ -38,6 +38,9 @@ var height = room_height div CELL_HEIGHT;
 grid = ds_grid_create(width, height);
 mpGrid = mp_grid_create(0,0,width,height,CELL_WIDTH,CELL_HEIGHT);
 
+// pathfinding grid (rat)
+grid_path = mp_grid_create(0, 0, width, height, CELL_WIDTH, CELL_HEIGHT);
+
 // Fill the grid with the void
 ds_grid_set_region(grid, 0, 0, width-1, height-1, VOID);
 
@@ -77,7 +80,23 @@ repeat (1000) {
     cx = clamp(cx, 1, width-2);
     cy = clamp(cy, 1, height-2);
 }
+/// add hostiles (rat)
+    var zCount = random_range(15,25);
+    for(var i = 0; i &lt; zCount; i++){
+    var p = false;
+    while(p==false){
+    var zx = random_range(96,room_width-96);
+    var zy = random_range(96,room_width-96);
+    if(!grid_place_meetingBirdSCR(zx,zy) &amp;&amp; !place_meeting(zx,zy,enemyOBJ)){
+    //there isn't an enemy or a wall there;
+    //spawn an enemy
+    p = true;
+    instance_create(zx,zy,monsterRatOBJ);
+    }
 
+} 
+    
+}
 // Add the walls
 for (var yy = 1; yy &lt; height-1; yy++) {
     for (var xx = 1; xx &lt; width-1; xx++) {
@@ -97,9 +116,10 @@ for (var yy = 0; yy &lt; height; yy++) {
         if (grid[# xx, yy] == FLOOR) {
             // Draw the floor
             tile_add(floorTileBirdBKG, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0)
-        } else{
-        //Mark Cell as Forbidden in the ds Grid
-        mp_grid_add_cell(mpGrid,xx,yy);
+        }
+        ///RAT PATH FINDING
+        else{
+        mp_grid_add_cell(grid_path,xx,yy);
         }
         
     }
@@ -180,6 +200,57 @@ for (var yy = 0; yy &lt; height*2; yy++) {
             }
         }
     }
+}
+
+
+
+//instantiate a bunch of items
+var boneCount = random_range(5,15);
+mask_index = boneBirdSPR;
+for(var i = 0; i &lt; boneCount; i++){
+var p = false;
+while(p==false){
+var zx = random_range(48,room_width-48);
+var zy = random_range(48,room_width-48);
+    if(!grid_place_meetingBirdSCR(zx,zy)){
+    //there isn't an enemy or a wall there;
+    //spawn an enemy
+    p = true;
+    instance_create(zx,zy,boneBirdOBJ);
+    }
+}
+}
+
+var stoneCount = random_range(5,15);
+mask_index = stoneBirdSPR;
+for(var i = 0; i &lt; stoneCount; i++){
+var p = false;
+while(p==false){
+var zx = random_range(48,room_width-48);
+var zy = random_range(48,room_width-48);
+    if(!grid_place_meetingBirdSCR(zx,zy)){
+    //there isn't an enemy or a wall there;
+    //spawn an enemy
+    p = true;
+    instance_create(zx,zy,stoneBirdOBJ);
+    }
+}
+}
+
+var woodCount = random_range(5,15);
+mask_index = woodBirdSPR;
+for(var i = 0; i &lt; woodCount; i++){
+var p = false;
+while(p==false){
+var zx = random_range(48,room_width-48);
+var zy = random_range(48,room_width-48);
+    if(!grid_place_meetingBirdSCR(zx,zy)){
+    //there isn't an enemy or a wall there;
+    //spawn an enemy
+    p = true;
+    instance_create(zx,zy,woodBirdOBJ);
+    }
+}
 }
 
 
