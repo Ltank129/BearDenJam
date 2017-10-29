@@ -4,8 +4,8 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
-  <parentName>rInventoryItemBirdOBJ</parentName>
+  <persistent>0</persistent>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,12 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myName = "Bone"
-myID = 0;
-isUnique = false;
+            <string>myName = "Dungeon Key"
+myID = -98492;
+isUnique = true;
 isUsable = false;
+itemType = 1;
 count = 1;
-itemType = 0 //Resource;
 </string>
           </argument>
         </arguments>
