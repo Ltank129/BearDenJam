@@ -21,6 +21,9 @@
       </sprites>
     </sprites>
     <sprite>sprites\monsterRatSPR</sprite>
+    <sprite>sprites\boneBirdSPR</sprite>
+    <sprite>sprites\stoneBirdSPR</sprite>
+    <sprite>sprites\woodBirdSPR</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -36,7 +39,18 @@
     <object>objects\levelBirdOBJ</object>
     <object>objects\playerBirdOBJ</object>
     <object>objects\monsterRatOBJ</object>
+<<<<<<< HEAD
     <object>objects\enemyOBJ</object>
+=======
+    <object>objects\controllerBirdOBJ</object>
+    <objects name="ResourceItems">
+      <object>objects\boneBirdOBJ</object>
+      <object>objects\stoneBirdOBJ</object>
+    </objects>
+    <objects name="Item">
+      <object>objects\inventoryItem</object>
+    </objects>
+>>>>>>> master
   </objects>
   <rooms name="rooms">
     <room>rooms\testBirdRM</room>

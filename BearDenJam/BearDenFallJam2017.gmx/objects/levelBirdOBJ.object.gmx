@@ -36,6 +36,7 @@ var height = room_height div CELL_HEIGHT;
 
 // Create the grid
 grid = ds_grid_create(width, height);
+mpGrid = mp_grid_create(0,0,width,height,CELL_WIDTH,CELL_HEIGHT);
 
 // pathfinding grid (rat)
 grid_path = mp_grid_create(0, 0, width, height, CELL_WIDTH, CELL_HEIGHT);
@@ -118,12 +119,21 @@ for (var yy = 0; yy &lt; height; yy++) {
         if (grid[# xx, yy] == FLOOR) {
             // Draw the floor
             tile_add(floorTileBirdBKG, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0)
+<<<<<<< HEAD
   } 
   ///RAT PATH FINDING
   else { 
   mp_grid_add_cell(grid_path, xx, yy);
    }
     } 
+=======
+        } else{
+        //Mark Cell as Forbidden in the ds Grid
+        mp_grid_add_cell(mpGrid,xx,yy);
+        }
+        
+    }
+>>>>>>> master
 }
 
 //////////////////////////////////////////////////////////////////
@@ -233,10 +243,14 @@ for (var yy = 0; yy &lt; height*2; yy++) {
           <argument>
             <kind>1</kind>
             <string>ds_grid_destroy(grid);
+<<<<<<< HEAD
 
 /// Rat cleanup
 mp_grid_destroy(grid_path);
 
+=======
+mp_grid_destroy(mpGrid);
+>>>>>>> master
 </string>
           </argument>
         </arguments>
