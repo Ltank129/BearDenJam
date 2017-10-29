@@ -109,9 +109,7 @@ mazeMoveBirdSCR(hspd,vspd);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(32,32,"Health:"+string(myHP)+"  Bones:"+string(controllerBirdOBJ.boneCount)+"  Stones:"+string(controllerBirdOBJ.stoneCount)+"  Wood:"+string(controllerBirdOBJ.woodCount));
-
-
+            <string>draw_text(32,32,"Health:"+string(myHP));
 
 </string>
           </argument>
