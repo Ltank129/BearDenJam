@@ -21,6 +21,10 @@
       </sprites>
     </sprites>
     <sprite>sprites\monsterRatSPR</sprite>
+    <sprite>sprites\boneBirdSPR</sprite>
+    <sprite>sprites\stoneBirdSPR</sprite>
+    <sprite>sprites\woodBirdSPR</sprite>
+    <sprite>sprites\potionBirdSPR</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -30,17 +34,31 @@
   <scripts name="scripts">
     <script>scripts\mazeMoveBirdSCR.gml</script>
     <script>scripts\grid_place_meetingBirdSCR.gml</script>
-    <script>scripts\monster_pathingRatSCR.gml</script>
+    <scripts name="InventoryScripts">
+      <script>scripts\inventoryAddBirdSCR.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\levelBirdOBJ</object>
     <object>objects\playerBirdOBJ</object>
     <object>objects\monsterRatOBJ</object>
-    <object>objects\enemyOBJ</object>
+    <object>objects\controllerBirdOBJ</object>
+    <objects name="ResourceItems">
+      <object>objects\boneBirdOBJ</object>
+      <object>objects\stoneBirdOBJ</object>
+      <object>objects\woodBirdOBJ</object>
+      <object>objects\boneMealBirdOBJ</object>
+    </objects>
+    <objects name="Item">
+      <object>objects\rInventoryItemBirdOBJ</object>
+      <object>objects\rBoneItemBirdOBJ</object>
+      <object>objects\rStoneItemBirdOBJ</object>
+      <object>objects\rWoodItemBirdOBJ</object>
+      <object>objects\cBoneMealItemBirdOBJ</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\testBirdRM</room>
-    <room>rooms\testRatRM</room>
   </rooms>
   <constants number="6">
     <constant name="CELL_WIDTH">64</constant>
