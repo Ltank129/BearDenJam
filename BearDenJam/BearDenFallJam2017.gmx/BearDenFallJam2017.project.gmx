@@ -37,6 +37,7 @@
     <scripts name="InventoryScripts">
       <script>scripts\inventoryAddBirdSCR.gml</script>
     </scripts>
+    <script>scripts\monster_pathingRatSCR.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\levelBirdOBJ</object>
@@ -56,6 +57,7 @@
       <object>objects\rWoodItemBirdOBJ</object>
       <object>objects\cBoneMealItemBirdOBJ</object>
     </objects>
+    <object>objects\monsterparrentOBJ</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\testBirdRM</room>

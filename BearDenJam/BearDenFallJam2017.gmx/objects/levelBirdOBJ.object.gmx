@@ -283,7 +283,7 @@ var zy = random_range(48,room_width-48);
           <argument>
             <kind>1</kind>
             <string>ds_grid_destroy(grid);
-mp_grid_destroy(mpGrid);
+mp_grid_destroy(grid_path);
 </string>
           </argument>
         </arguments>
