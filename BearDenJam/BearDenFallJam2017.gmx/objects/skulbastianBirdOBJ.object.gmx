@@ -160,6 +160,35 @@ case 2:
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Test Unlocks
+//test unlocks
+for(var i =0; i &lt; 1; i++){
+if(instance_number(houseBirdOBJ) &gt;= buildGrid[# 4,i]){  //if we have built more houses than prereqd
+    buildGrid[# 5,i] = 1;   //set it so that the building can be unlocked
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
