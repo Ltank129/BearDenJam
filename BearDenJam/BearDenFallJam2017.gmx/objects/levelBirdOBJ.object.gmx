@@ -81,17 +81,13 @@ repeat (1000) {
     cy = clamp(cy, 1, height-2);
 }
 /// add hostiles (rat)
-<<<<<<< HEAD
-    // add hostiles (rat)
-=======
->>>>>>> master
     var zCount = random_range(15,25);
     for(var i = 0; i &lt; zCount; i++){
     var p = false;
     while(p==false){
     var zx = random_range(96,room_width-96);
     var zy = random_range(96,room_width-96);
-    if(!grid_place_meetingBirdSCR(zx,zy) &amp;&amp; !place_meeting(zx,zy,monsterRatOBJ)){
+    if(!grid_place_meetingBirdSCR(zx,zy) &amp;&amp; !place_meeting(zx,zy,enemyOBJ)){
     //there isn't an enemy or a wall there;
     //spawn an enemy
     p = true;
@@ -256,12 +252,9 @@ var zy = random_range(48,room_width-48);
     }
 }
 }
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> master
 
 
 
@@ -290,18 +283,7 @@ var zy = random_range(48,room_width-48);
           <argument>
             <kind>1</kind>
             <string>ds_grid_destroy(grid);
-<<<<<<< HEAD
-<<<<<<< HEAD
-mp_grid_destroy(grid_path);
-=======
-
-/// Rat cleanup
-mp_grid_destroy(grid_path);
-
->>>>>>> master
-=======
 mp_grid_destroy(mpGrid);
->>>>>>> master
 </string>
           </argument>
         </arguments>
