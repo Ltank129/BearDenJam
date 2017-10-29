@@ -30,14 +30,17 @@
   <scripts name="scripts">
     <script>scripts\mazeMoveBirdSCR.gml</script>
     <script>scripts\grid_place_meetingBirdSCR.gml</script>
+    <script>scripts\monster_pathingRatSCR.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\levelBirdOBJ</object>
     <object>objects\playerBirdOBJ</object>
     <object>objects\monsterRatOBJ</object>
+    <object>objects\enemyOBJ</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\testBirdRM</room>
+    <room>rooms\testRatRM</room>
   </rooms>
   <constants number="6">
     <constant name="CELL_WIDTH">64</constant>
