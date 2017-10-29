@@ -92,6 +92,7 @@
     <object>objects\playerBirdOBJ</object>
     <object>objects\playerTownBirdOBJ</object>
     <object>objects\monsterRatOBJ</object>
+    <object>objects\monsterparrentOBJ</object>
     <object>objects\controllerBirdOBJ</object>
     <objects name="ResourceItems">
       <object>objects\boneBirdOBJ</object>
@@ -111,6 +112,9 @@
       <object>objects\cBoneLadderItemBirdOBJ</object>
       <object>objects\oKeyItemBirdOBJ</object>
     </objects>
+
+    <object>objects\monsterRatattackOBJ</object>
+
     <object>objects\monsterparrentOBJ</object>
     <object>objects\doorBirdOBJ</object>
     <object>objects\staircaseBirdOBJ</object>
@@ -127,6 +131,7 @@
       </objects>
     </objects>
     <object>objects\textBirdOBJ</object>
+
   </objects>
   <rooms name="rooms">
     <room>rooms\townBirdRoom</room>

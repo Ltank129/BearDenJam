@@ -7,3 +7,4 @@ if (instance_exists(playerBirdOBJ)) {
         path_start(path, spd, path_action_stop, false);
        }
 }
+

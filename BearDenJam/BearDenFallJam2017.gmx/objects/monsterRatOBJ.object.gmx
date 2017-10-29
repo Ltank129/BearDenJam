@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>monsterparrentOBJ</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,17 +26,32 @@
           <argument>
             <kind>1</kind>
             <string>///initial variables (rat)
-hp = 5
-spd = 2
-
-depth = -y
-
+hp = 5;
+spd = 3;
+attackstate = false;
+movementstate = false
+depth = -y;
+cooldown = 0
 path = path_add ();
 
-alarm[0] = room_speed;
+alarm[0] = room_speed/2;
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="1" enumb="0">
@@ -95,11 +110,11 @@ alarm[0] = room_speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string> ///move towards player
+            <string>///move towards player
 
-monster_pathingRatSCR();
+ if (movementstate = true) {monster_pathingRatSCR()};
 
-alarm[0] = room_speed
+alarm[0] = room_speed/2;
 </string>
           </argument>
         </arguments>
@@ -122,8 +137,19 @@ alarm[0] = room_speed
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///get BEHIND the wall
+            <string>///get BEHIND the wall + other stuff
  depth = -y; /// also call the inherited stuff
+
+    //attack state
+   
+   var dir = point_direction(playerBirdOBJ.x, playerBirdOBJ.y, x, y);
+   if (attackstate = true &amp;&amp; cooldown = 0) {instance_create(x,y,monsterRatattackOBJ);
+   cooldown = 75
+    }
+    
+    
+
+
 </string>
           </argument>
         </arguments>
@@ -141,6 +167,38 @@ alarm[0] = room_speed
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="4" ename="monsterRatOBJ">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// pathchange
+if (x == other.x &amp;&amp; y= other.y) {
+    mazeMoveBirdSCR(sign(other.id-id), 0);
+
+}
+
+var dir = point_direction(other.x, other.y, x, y);
+var hspd = lengthdir_x(.75,dir);
+var vspd = lengthdir_y(.75,dir);
+mazeMoveBirdSCR(hspd, vspd);
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
     <event eventtype="7" enumb="5">
