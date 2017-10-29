@@ -36,7 +36,6 @@ var height = room_height div CELL_HEIGHT;
 
 // Create the grid
 grid = ds_grid_create(width, height);
-mpGrid = mp_grid_create(0,0,width,height,CELL_WIDTH,CELL_HEIGHT);
 
 // pathfinding grid (rat)
 grid_path = mp_grid_create(0, 0, width, height, CELL_WIDTH, CELL_HEIGHT);
@@ -65,6 +64,7 @@ repeat (1000) {
     // Place a floor tile at the controller position
     grid[# cx, cy] = FLOOR;
     
+    
     // Randomize the direction of the controller
     if (irandom(odds) == odds) {
         cdir = irandom(3);
@@ -80,7 +80,7 @@ repeat (1000) {
     cx = clamp(cx, 1, width-2);
     cy = clamp(cy, 1, height-2);
 }
-/// add hostiles (rat)
+    // add hostiles (rat)
     var zCount = random_range(15,25);
     for(var i = 0; i &lt; zCount; i++){
     var p = false;
@@ -97,6 +97,8 @@ repeat (1000) {
 } 
     
 }
+    
+    
 // Add the walls
 for (var yy = 1; yy &lt; height-1; yy++) {
     for (var xx = 1; xx &lt; width-1; xx++) {
@@ -106,7 +108,7 @@ for (var yy = 1; yy &lt; height-1; yy++) {
             if (grid[# xx-1, yy] != FLOOR) grid[# xx-1, yy] = WALL;
             if (grid[# xx, yy+1] != FLOOR) grid[# xx, yy+1] = WALL;
             if (grid[# xx, yy-1] != FLOOR) grid[# xx, yy-1] = WALL;
-        }
+       }
     }
 }
 
@@ -116,13 +118,12 @@ for (var yy = 0; yy &lt; height; yy++) {
         if (grid[# xx, yy] == FLOOR) {
             // Draw the floor
             tile_add(floorTileBirdBKG, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0)
-        }
-        ///RAT PATH FINDING
-        else{
-        mp_grid_add_cell(grid_path,xx,yy);
-        }
-        
-    }
+  } 
+  ///RAT PATH FINDING
+  else { 
+  mp_grid_add_cell(grid_path, xx, yy);
+   }
+    } 
 }
 
 //////////////////////////////////////////////////////////////////
@@ -204,57 +205,6 @@ for (var yy = 0; yy &lt; height*2; yy++) {
 
 
 
-//instantiate a bunch of items
-var boneCount = random_range(5,15);
-mask_index = boneBirdSPR;
-for(var i = 0; i &lt; boneCount; i++){
-var p = false;
-while(p==false){
-var zx = random_range(48,room_width-48);
-var zy = random_range(48,room_width-48);
-    if(!grid_place_meetingBirdSCR(zx,zy)){
-    //there isn't an enemy or a wall there;
-    //spawn an enemy
-    p = true;
-    instance_create(zx,zy,boneBirdOBJ);
-    }
-}
-}
-
-var stoneCount = random_range(5,15);
-mask_index = stoneBirdSPR;
-for(var i = 0; i &lt; stoneCount; i++){
-var p = false;
-while(p==false){
-var zx = random_range(48,room_width-48);
-var zy = random_range(48,room_width-48);
-    if(!grid_place_meetingBirdSCR(zx,zy)){
-    //there isn't an enemy or a wall there;
-    //spawn an enemy
-    p = true;
-    instance_create(zx,zy,stoneBirdOBJ);
-    }
-}
-}
-
-var woodCount = random_range(5,15);
-mask_index = woodBirdSPR;
-for(var i = 0; i &lt; woodCount; i++){
-var p = false;
-while(p==false){
-var zx = random_range(48,room_width-48);
-var zy = random_range(48,room_width-48);
-    if(!grid_place_meetingBirdSCR(zx,zy)){
-    //there isn't an enemy or a wall there;
-    //spawn an enemy
-    p = true;
-    instance_create(zx,zy,woodBirdOBJ);
-    }
-}
-}
-
-
-
 
 
 
@@ -283,7 +233,10 @@ var zy = random_range(48,room_width-48);
           <argument>
             <kind>1</kind>
             <string>ds_grid_destroy(grid);
-mp_grid_destroy(mpGrid);
+
+/// Rat cleanup
+mp_grid_destroy(grid_path);
+
 </string>
           </argument>
         </arguments>
