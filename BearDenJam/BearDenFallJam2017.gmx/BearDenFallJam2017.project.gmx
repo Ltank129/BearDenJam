@@ -31,10 +31,12 @@
     </sprites>
     <sprites name="DungeonStuff">
       <sprite>sprites\dungeonDoorBirdSPR</sprite>
+      <sprite>sprites\staircaseBirdSPR</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
+    <background>background\background2</background>
     <background>background\floorTileBirdBKG</background>
   </backgrounds>
   <paths name="paths"/>
@@ -54,6 +56,7 @@
     <object>objects\controllerBirdOBJ</object>
     <objects name="ResourceItems">
       <object>objects\boneBirdOBJ</object>
+      <object>objects\boneLadderBirdOBJ</object>
       <object>objects\stoneBirdOBJ</object>
       <object>objects\woodBirdOBJ</object>
       <object>objects\boneMealBirdOBJ</object>
@@ -66,10 +69,12 @@
       <object>objects\rStoneItemBirdOBJ</object>
       <object>objects\rWoodItemBirdOBJ</object>
       <object>objects\cBoneMealItemBirdOBJ</object>
+      <object>objects\cBoneLadderItemBirdOBJ</object>
       <object>objects\oKeyItemBirdOBJ</object>
     </objects>
     <object>objects\monsterparrentOBJ</object>
     <object>objects\doorBirdOBJ</object>
+    <object>objects\staircaseBirdOBJ</object>
     <object>objects\fadeBirdOBJ</object>
   </objects>
   <rooms name="rooms">
