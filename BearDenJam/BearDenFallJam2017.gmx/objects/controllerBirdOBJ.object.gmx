@@ -34,12 +34,101 @@ instance_destroy();
 
 //Create the inventory
 // width 0 = Item Type; 1 = Item Name; 2 = Item Count; 3 = Healing Factor; 4 = Health Bonus; 5 = Damage Bonus;
-//inventory = ds_list_create();  //Create the Inventory List
-
+inventory = ds_list_create();  //Create the Inventory List
+inventoryMax = 10;
 //Inventory stored through floating invisible persistent objets
 
 
-villagerCount = 0;
+inventoryOpen = false;
+
+
+
+
+///gui effects
+global.display_scale = display_get_gui_width/view_wview[view_current];
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(keyboard_check_pressed(ord("I"))){
+inventoryOpen = !inventoryOpen;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_list_destroy(inventory);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(inventoryOpen){
+for(var i = 0; i&lt;ds_list_size(inventory);i++){
+    //draw the inventory label
+    draw_set_color(c_blue);
+     draw_rectangle(476,56+32*i,608,72+32*i,false);
+     draw_set_valign(fa_center);
+     draw_set_color(c_white);
+     draw_text(480,64+32*i,inventory[| i].myName + " x" + string(inventory[| i].count));
+    
+}
+}
 </string>
           </argument>
         </arguments>

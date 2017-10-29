@@ -33,6 +33,9 @@
   <scripts name="scripts">
     <script>scripts\mazeMoveBirdSCR.gml</script>
     <script>scripts\grid_place_meetingBirdSCR.gml</script>
+    <scripts name="InventoryScripts">
+      <script>scripts\inventoryAddBirdSCR.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\levelBirdOBJ</object>
@@ -44,7 +47,10 @@
       <object>objects\stoneBirdOBJ</object>
     </objects>
     <objects name="Item">
-      <object>objects\inventoryItem</object>
+      <object>objects\rInventoryItemBirdOBJ</object>
+      <object>objects\rBoneItemBirdOBJ</object>
+      <object>objects\rStoneItemBirdOBJ</object>
+      <object>objects\rBoodItemBirdOBJ</object>
     </objects>
   </objects>
   <rooms name="rooms">
