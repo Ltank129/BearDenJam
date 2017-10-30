@@ -73,10 +73,14 @@ alarm[3] = 10;
           <argument>
             <kind>1</kind>
             <string>///dammage player
+
     with (other) {
     controllerBirdOBJ.myHP -=10;
     }
     instance_destroy();
+
+    controllerBirdOBJ.myHP-=10;
+
 </string>
           </argument>
         </arguments>

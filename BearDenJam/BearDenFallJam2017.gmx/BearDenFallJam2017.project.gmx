@@ -23,7 +23,12 @@
     </datafile>
   </datafiles>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sounds name="Backgrounds">
+      <sound>sound\townBKG</sound>
+      <sound>sound\dungeonBKG</sound>
+    </sounds>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\monsterRatSPR</sprite>
     <sprites name="player">
@@ -118,6 +123,10 @@
       <object>objects\oKeyItemBirdOBJ</object>
     </objects>
     <object>objects\monsterRatattackOBJ</object>
+
+
+    <object>objects\monsterparrentOBJ</object>
+
     <object>objects\doorBirdOBJ</object>
     <object>objects\staircaseBirdOBJ</object>
     <object>objects\fadeBirdOBJ</object>

@@ -34,18 +34,33 @@ dialogue[1] = "Need Something Else?"
 dialogue[2] = "On it, Boss!";
 
 
+
+
+
+
 myText = noone;
 show_debug_message("CREATING GRID");
-buildGrid = ds_grid_create(6,1);
+buildGrid = ds_grid_create(1,7);
 show_debug_message("Loading Grid");
 buildGrid = csv_to_ds_grid("BuildingFile.csv",false)
 
 //test unlocks
-for(var i =0; i &lt; 1; i++){
-if(instance_number(houseBirdOBJ) &gt;= buildGrid[# 4,i]){  //if we have built more houses than prereqd
-    buildGrid[# 5,i] = 1;   //set it so that the building can be unlocked
-    }
-}
+event_user(0);
+
+
+        boneCount = 0;
+        if(instance_exists(rBoneItemBirdOBJ)){
+        boneCount = rBoneItemBirdOBJ.count;
+        }
+        
+         stoneCount = 0;
+        if(instance_exists(rStoneItemBirdOBJ)){
+        stoneCount = rStoneItemBirdOBJ.count;
+        }
+        woodCount = 0;
+        if(instance_exists(rWoodItemBirdOBJ)){
+        woodCount = rWoodItemBirdOBJ.count;
+        }
 </string>
           </argument>
         </arguments>
@@ -95,7 +110,22 @@ isTalking = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(playerTownBirdOBJ)){
+            <string>
+        if(instance_exists(rBoneItemBirdOBJ)){
+        boneCount = rBoneItemBirdOBJ.count;
+        }
+        
+        if(instance_exists(rStoneItemBirdOBJ)){
+        stoneCount = rStoneItemBirdOBJ.count;
+        }
+        if(instance_exists(rWoodItemBirdOBJ)){
+        woodCount = rWoodItemBirdOBJ.count;
+        }
+
+
+
+
+if(instance_exists(playerTownBirdOBJ)){
 
     switch(isTalking){
 case -1:   
@@ -127,9 +157,15 @@ case 0:         //Introduction
         if(myText.time &gt;= myText.text_length){
             //We have finished talking. Check for button pressed
             if(mouse_check_button_pressed(mb_left)){
-            if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),320,704,1124,752)){
+            if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),320,704,1124,752) &amp;&amp; controllerBirdOBJ.curBuildHouse == noone){
                 //I'd like to build something
                 //open build menu
+                
+                isTalking = 1;
+                event_user(0); //test for unlocks
+                with(myText){
+                 instance_destroy();
+                }
                 }
             if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),320,768,1124,816)){
                  //Nothing Now
@@ -139,7 +175,7 @@ case 0:         //Introduction
                 }
                 alarm[0] = room_speed * 4;
                 myText = noone;
-                playerTownBirdOBJ.state = P_STATE_WALK;  
+                playerTownBirdOBJ.state = P_STATE_WALK;
                 }  
             }
         }
@@ -147,12 +183,83 @@ case 0:         //Introduction
 
 case 1:
     //Do some building stuff
+    if(mouse_check_button_pressed(mb_left)){
+        if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),56,806,820,834)){
+            isTalking = 2;
+                 with(myText){
+                 instance_destroy();
+                }
+                alarm[0] = room_speed * 4;
+                myText = noone;
+                playerTownBirdOBJ.state = P_STATE_WALK; 
+        }else{
+        for(var i = 0; i &lt; ds_grid_height(buildGrid);i++){
+            if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),640,112+64*i,768,144+64*i)){
+                //check if we can build
+                 if(boneCount &gt;= buildGrid[# 1,i] &amp;&amp; stoneCount &gt;= buildGrid[# 2,i] &amp;&amp; woodCount &gt;= buildGrid[# 3,i]){
+                    //We built something!
+                    controllerBirdOBJ.curBuildHouse=buildGrid[# 0,i];
+                        isTalking = 2;
+                         with(myText){
+                        instance_destroy();
+                        }
+                        alarm[0] = room_speed * 4;
+                        myText = noone;
+                        playerTownBirdOBJ.state = P_STATE_WALK;
+                    }
+                }
+        }
+        
+        
+        
+        
+        }
+    }
+    
+    
+    
+    //772,112+64*i,836,144+64*i
+    
+    
+    
+    
     break;
 
 case 2:
         if(myText == noone){
         myText = drawTextBoxBirdSCR("Okay, you tell me if you need anything!",1,x,y-48);
         }    
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Test Unlocks
+//test unlocks
+show_debug_message("House Count" +string(instance_number(houseBirdOBJ)));
+for(var i =0; i &lt; ds_grid_height(buildGrid); i++){
+if(instance_number(houseBirdOBJ) &gt;= buildGrid[# 5,i]){  //if we have built more houses than prereqd
+    buildGrid[# 4,i] = 1;   //set it so that the building can be unlocked
+    show_debug_message("Unlock this shit");
     }
 }
 </string>
@@ -206,7 +313,9 @@ case 0:
         //if the text is finished
         if(myText!= noone){
             if(myText.time &gt;= myText.text_length){
+            if(controllerBirdOBJ.curBuildHouse==noone){
             drawButtonBirdSCR(320,704,1124,752,"I'd like to build something!");
+            }
             drawButtonBirdSCR(320,768,1124,816,"Nothing now.");
             
             
@@ -214,7 +323,48 @@ case 0:
         }
         break;
 
+case 1:
+        ///Draw the base Rectangle
+        draw_set_color(c_black);
+        draw_rectangle(56,60,820,788,false)
+        draw_set_color(c_white)
+        draw_rectangle(56,60,820,788,true)
+        draw_set_halign(fa_center)
+        draw_set_valign(fa_top);
+        draw_set_font(fntButtons);
+        draw_text(310,68,"BUILDINGS");
+        
+        
+        
+        show_debug_message("Item Count :" + string(boneCount) + " " +string(stoneCount) +" "+string(woodCount));
+        ///Cycle through the buildings
+        for(var i = 0; i &lt; ds_grid_height(buildGrid);i++){
+        
+            //The building is unlocked
+            //Draw the building
+            draw_set_color(c_white);
+            draw_set_halign(fa_left);
+            draw_set_valign(fa_center);
+            draw_text(72,128+64*i,buildGrid[# 6,i])
+            
+           
+            draw_set_color(c_red);
+            if(boneCount &gt;= buildGrid[# 1,i] &amp;&amp; stoneCount &gt;= buildGrid[# 2,i] &amp;&amp; woodCount &gt;= buildGrid[# 3,i]){
+            draw_set_color(c_green);
+           
+            }
+            draw_text(256,128+64*i,string(buildGrid[# 1,i])+"x Bone + "+string(buildGrid[# 2,i])+"x Stone + "+string(buildGrid[# 3,i])+"x Wood"); 
+             drawButtonBirdSCR(640,112+64*i,768,144+64*i,"Build This");
+            
+            }
+        
+        //draw the close button
+        draw_set_valign(fa_center);
+        drawButtonBirdSCR(56,806,820,834,"Leave");
+        
+        
 
+    break;
 
 }
 </string>
