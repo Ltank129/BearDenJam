@@ -5,14 +5,13 @@ var bx2 = argument[2];
 var by2 = argument[3];
 var str = argument[4];
 
-
 if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),bx1,by1,bx2,by2)){
         draw_set_color(c_dkgray)
         } else{
         draw_set_color(c_gray)
         }
-     draw_rectangle(bx1,by1,bx2,by2,false)
-     draw_set_color(c_white)
+    draw_rectangle(bx1,by1,bx2,by2,false)
+    draw_set_color(c_white)
     draw_rectangle(bx1,by1,bx2,by2,true)
      draw_set_halign(fa_center)
      draw_set_valign(fa_center);

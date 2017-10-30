@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>building[TOWN_SKULBASTIAN] =skulbastianHouseBirdOBJ;
 building[TOWN_DUNGEON_DOOR] =townDungeonDoorBirdOBJ;
-
+building[TOWN_HOUSE] = houseBirdOBJ;
 
 
 

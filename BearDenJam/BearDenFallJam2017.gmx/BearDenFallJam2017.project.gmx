@@ -112,9 +112,7 @@
       <object>objects\cBoneLadderItemBirdOBJ</object>
       <object>objects\oKeyItemBirdOBJ</object>
     </objects>
-
     <object>objects\monsterRatattackOBJ</object>
-
     <object>objects\monsterparrentOBJ</object>
     <object>objects\doorBirdOBJ</object>
     <object>objects\staircaseBirdOBJ</object>
@@ -131,7 +129,6 @@
       </objects>
     </objects>
     <object>objects\textBirdOBJ</object>
-
   </objects>
   <rooms name="rooms">
     <room>rooms\townBirdRoom</room>
