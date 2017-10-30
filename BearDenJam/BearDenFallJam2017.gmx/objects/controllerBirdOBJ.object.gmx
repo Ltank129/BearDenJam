@@ -29,7 +29,7 @@
 //there is already a controller
 instance_destroy();
 }
-
+invincible = false;
 level = 1;
 
 //Create the inventory
@@ -72,6 +72,29 @@ show_debug_message("Made SKullbastian");
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>invincible = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -89,11 +112,22 @@ show_debug_message("Made SKullbastian");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(keyboard_check_pressed(ord("I"))){
+            <string>myHP = clamp(myHP,0,100);
+
+if(keyboard_check_pressed(ord("I"))){
 inventoryOpen = !inventoryOpen;
 }
 
+if(myHP &lt;= 0){
+//OH NO
+//We're DEAD
+with(playerBirdOBJ){
+instance_create(x,y,deadPlayerOBJ);
+instance_destroy();
+}
+ds_list_clear(inventory); ///CLear the inventory
 
+}
 
 
 
@@ -137,6 +171,7 @@ if(mouse_check_button_pressed(mb_left) &amp;&amp; inventoryOpen){
 if(audio_is_playing(dungeonBKG)){
 audio_stop_sound(dungeonBKG);
 }
+myHP = 100;
 audio_play_sound(townBKG,0,1);
 if(curBuildHouse!=noone){
         //We're building a house
@@ -243,8 +278,11 @@ for(var i = 0; i&lt;ds_list_size(inventory);i++){
      draw_rectangle(888,112+64*i,1220,144+64*i,true);
      draw_set_valign(fa_center);
      if(inventory[| i] != noone){
+     if(instance_exists(inventory[| i])){
      draw_text(896,128+64*i,inventory[| i].myName + " x" + string(inventory[| i].count));
-     
+        }else{
+        ds_list_delete(inventory,i);
+        }
      //if usable, draw the use button
      if(inventory[|i].isUsable){
      drawButtonBirdSCR(1240,112+64*i,1300,144+64*i,"USE");
