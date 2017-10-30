@@ -281,7 +281,7 @@ var zy = random_range(48,room_width-48);
     if(!grid_place_meetingBirdSCR(zx,zy)){
 
     p = true;
-    instance_create(zx,zy,boneLadderBirdOBJ);
+    instance_create(zx,zy,woodBirdOBJ);
     }
 }
 }
@@ -304,16 +304,16 @@ var zy = random_range(48,room_width-48);
 
 
 //instantiate up to one bone ladder
-var ladderCount = irandom(1);
+var ladderCount=  random_range(1,15);
 mask_index = boneLadderBirdSPR;
-if(ladderCount ==0){
+for(var i = 0; i &lt; ladderCount; i++){
 var p = false;
 while(p==false){
 var zx = random_range(48,room_width-48);
 var zy = random_range(48,room_width-48);
     if(!grid_place_meetingBirdSCR(zx,zy)){
     p = true;
-    instance_create(zx,zy,woodBirdOBJ);
+    instance_create(zx,zy,boneLadderBirdOBJ);
     }
 }
 }

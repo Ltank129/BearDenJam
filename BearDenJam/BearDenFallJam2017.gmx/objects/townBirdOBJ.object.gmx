@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>building[TOWN_SKULBASTIAN] =skulbastianHouseBirdOBJ;
 building[TOWN_DUNGEON_DOOR] =townDungeonDoorBirdOBJ;
-
+building[TOWN_HOUSE] = houseBirdOBJ;
 
 
 
@@ -35,8 +35,8 @@ building[TOWN_DUNGEON_DOOR] =townDungeonDoorBirdOBJ;
 if(instance_exists(controllerBirdOBJ)){
 
 //set the room size
-room_width = CELL_WIDTH * controllerBirdOBJ.townWidth;
-room_height = CELL_WIDTH * controllerBirdOBJ.townHeight;
+room_width = CELL_WIDTH * (controllerBirdOBJ.townWidth+1);
+room_height = CELL_HEIGHT * (controllerBirdOBJ.townHeight+1);
 
 
 
@@ -68,20 +68,20 @@ var th = CELL_HEIGHT/2;
 
 for (var yy = 0; yy &lt; controllerBirdOBJ.townHeight*2; yy++) {
     for (var xx = 0; xx &lt; controllerBirdOBJ.townWidth*2; xx++) {
-        if (controllerBirdOBJ.townGrid[# xx div 2, yy div 2] == FLOOR) {
+        if (controllerBirdOBJ.townGrid[# xx div 2, yy div 2] == FLOOR &amp;&amp; (xx &lt; 3 || xx &gt; (controllerBirdOBJ.townWidth*2)-3 || yy &lt; 3 || yy &gt; (controllerBirdOBJ.townHeight*2)-3)) {
             // Get the tile's x and y
             var tx = xx*tw;
             var ty = yy*th;
             
-            var right = controllerBirdOBJ.townGrid[# (xx+1) div 2, yy div 2] == WALL;
-            var left = controllerBirdOBJ.townGrid[# (xx-1) div 2, yy div 2] == WALL;
-            var top = controllerBirdOBJ.townGrid[# xx div 2, (yy-1) div 2] == WALL;
-            var bottom = controllerBirdOBJ.townGrid[# xx div 2, (yy+1) div 2] == WALL;
+            var right = controllerBirdOBJ.townGrid[# (xx+1) div 2, yy div 2] != FLOOR
+            var left = controllerBirdOBJ.townGrid[# (xx-1) div 2, yy div 2] != FLOOR
+            var top = controllerBirdOBJ.townGrid[# xx div 2, (yy-1) div 2] != FLOOR
+            var bottom = controllerBirdOBJ.townGrid[# xx div 2, (yy+1) div 2] != FLOOR
             
-            var top_right = controllerBirdOBJ.townGrid[# (xx+1) div 2, (yy-1) div 2] == WALL;
-            var top_left = controllerBirdOBJ.townGrid[# (xx-1) div 2, (yy-1) div 2] == WALL;
-            var bottom_right = controllerBirdOBJ.townGrid[# (xx+1) div 2, (yy+1) div 2] == WALL;
-            var bottom_left = controllerBirdOBJ.townGrid[# (xx-1) div 2, (yy+1) div 2] == WALL;
+            var top_right = controllerBirdOBJ.townGrid[# (xx+1) div 2, (yy-1) div 2]!= FLOOR
+            var top_left = controllerBirdOBJ.townGrid[# (xx-1) div 2, (yy-1) div 2] != FLOOR 
+            var bottom_right = controllerBirdOBJ.townGrid[# (xx+1) div 2, (yy+1) div 2] != FLOOR 
+            var bottom_left = controllerBirdOBJ.townGrid[# (xx-1) div 2, (yy+1) div 2] != FLOOR 
             
             if (right) {
                 if (bottom) {

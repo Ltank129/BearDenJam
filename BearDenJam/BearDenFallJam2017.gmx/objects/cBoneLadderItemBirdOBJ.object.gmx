@@ -54,6 +54,10 @@ count = 1;
           <argument>
             <kind>1</kind>
             <string>show_debug_message("Used a bone ladder");
+var fade = instance_create(0,0,fadeBirdOBJ);
+fade.nextRoom = townBirdRoom;
+count -=1;
+controllerBirdOBJ.level = 0;
 event_user(0);
 </string>
           </argument>
