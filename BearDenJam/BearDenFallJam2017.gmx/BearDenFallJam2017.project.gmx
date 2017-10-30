@@ -60,6 +60,12 @@
       <sprite>sprites\houseBirdSPR</sprite>
       <sprite>sprites\townDungeonDoorBirdSPR</sprite>
     </sprites>
+    <sprites name="monsters">
+      <sprites name="human_female">
+        <sprite>sprites\enemy1SPR</sprite>
+        <sprite>sprites\enemy1idleSPR</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -91,9 +97,8 @@
     <object>objects\levelBirdOBJ</object>
     <object>objects\playerBirdOBJ</object>
     <object>objects\playerTownBirdOBJ</object>
-    <object>objects\monsterRatOBJ</object>
-    <object>objects\monsterparrentOBJ</object>
     <object>objects\controllerBirdOBJ</object>
+    <object>objects\monsterRatOBJ</object>
     <objects name="ResourceItems">
       <object>objects\boneBirdOBJ</object>
       <object>objects\boneLadderBirdOBJ</object>
@@ -112,10 +117,7 @@
       <object>objects\cBoneLadderItemBirdOBJ</object>
       <object>objects\oKeyItemBirdOBJ</object>
     </objects>
-
     <object>objects\monsterRatattackOBJ</object>
-
-    <object>objects\monsterparrentOBJ</object>
     <object>objects\doorBirdOBJ</object>
     <object>objects\staircaseBirdOBJ</object>
     <object>objects\fadeBirdOBJ</object>
@@ -131,13 +133,12 @@
       </objects>
     </objects>
     <object>objects\textBirdOBJ</object>
-
   </objects>
   <rooms name="rooms">
-    <room>rooms\townBirdRoom</room>
     <room>rooms\testBirdRM</room>
+    <room>rooms\townBirdRoom</room>
   </rooms>
-  <constants number="11">
+  <constants number="15">
     <constant name="CELL_WIDTH">64</constant>
     <constant name="CELL_HEIGHT">96</constant>
     <constant name="FLOOR">-5</constant>
@@ -149,6 +150,10 @@
     <constant name="TOWN_HOUSE">10014</constant>
     <constant name="P_STATE_WALK">901</constant>
     <constant name="P_STATE_MENU">902</constant>
+    <constant name="M_IDLE">-188</constant>
+    <constant name="M_CHASE">-189</constant>
+    <constant name="M_ATTACk">-190</constant>
+    <constant name="M_RECOVER">-191</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,13 +27,13 @@
             <kind>1</kind>
             <string>///variables and stuff
 
-var movestate
+var movementstate
 var attackstate
 var idlestate
 var hurtstate
 
 idlestate = true
-movestate = false
+movementstate = false
 attackstate = false
 hurtstate = false
 
@@ -63,15 +63,18 @@ hurtstate = false
           <argument>
             <kind>1</kind>
             <string>///monstersteps
-
+ if (movementstate = true) {monster_pathingRatSCR()}
 //death
     if(hp &lt;= 0) {instance_destroy()};
 
 //player detection
-    if distance_to_object(playerBirdOBJ) &lt; 100 {idlestate = false movementstate = true};
-    if distance_to_object(playerBirdOBJ) &gt; 200 {idlestate = true movementstate = false};
-    if distance_to_object(playerBirdOBJ) &gt; 20 { attackstate = true};
+    if distance_to_object(playerBirdOBJ) &lt; 800 {idlestate = false movementstate = true};
+    if distance_to_object(playerBirdOBJ) &gt; 1600 {idlestate = true movementstate = false};
+    if distance_to_object(playerBirdOBJ) &gt; 60 { attackstate = true};
     if cooldown &gt; 0 {cooldown = cooldown -1}
+       if distance_to_object(playerTownBirdOBJ) &lt; 800 {idlestate = false movementstate = true};
+    if distance_to_object(playerTownBirdOBJ) &gt; 1600 {idlestate = true movementstate = false};
+    if distance_to_object(playerTownBirdOBJ) &gt; 60 { attackstate = true};
     
     
 </string>
