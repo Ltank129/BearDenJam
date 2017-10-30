@@ -134,6 +134,10 @@ if(mouse_check_button_pressed(mb_left) &amp;&amp; inventoryOpen){
           <argument>
             <kind>1</kind>
             <string>if(room == townBirdRoom){
+if(audio_is_playing(dungeonBKG)){
+audio_stop_sound(dungeonBKG);
+}
+audio_play_sound(townBKG,0,1);
 if(curBuildHouse!=noone){
         //We're building a house
         var p = false;
@@ -157,6 +161,12 @@ if(curBuildHouse!=noone){
             }
         
         }
+}
+
+}else{
+audio_stop_sound(townBKG);
+if(!audio_is_playing(dungeonBKG)){
+audio_play_sound(dungeonBKG,0,1);
 }
 
 }
