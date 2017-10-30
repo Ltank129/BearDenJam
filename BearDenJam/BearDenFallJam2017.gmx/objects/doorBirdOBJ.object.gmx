@@ -70,6 +70,7 @@ myText = noone;
                 controllerBirdOBJ.level+=1;
                 var fade = instance_create(0,0,fadeBirdOBJ);
                 fade.nextRoom = room;
+                audio_play_sound(tledSFX,0,0);
             }
         }else{
          if(instance_exists(oKeyItemBirdOBJ)){

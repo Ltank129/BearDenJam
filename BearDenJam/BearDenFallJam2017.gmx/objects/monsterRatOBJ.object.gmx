@@ -26,17 +26,17 @@
           <argument>
             <kind>1</kind>
             <string>///initial variables (rat)
-hp = 5;
+hp = 40;
 spd = 3;
 
 state = M_IDLE;
 
 
 depth = -y;
-cooldown = 0;
+cooldown = 90;
+curCooldown = 0
+can_attack = true;
 path = path_add ();
-
-
 facing = 1
 </string>
           </argument>
@@ -63,32 +63,6 @@ facing = 1
             <string>if (path_exists (path)) {
     path_delete (path);
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>
-
-
-
 
 </string>
           </argument>
@@ -129,7 +103,6 @@ facing = 1
 ///monstersteps
      
 //death
-    if(hp &lt;= 0) {instance_destroy()};
 
 //player detection
 //    if distance_to_object(playerBirdOBJ) &lt; 800 {idlestate = false movementstate = true};
@@ -140,9 +113,15 @@ facing = 1
     //if distance_to_object(playerTownBirdOBJ) &gt; 1600 {idlestate = true movementstate = false};
     //if distance_to_object(playerTownBirdOBJ) &lt; 60 { attackstate = true};
     
+    if(curCooldown &gt; 0){
+    curCooldown -=1;
+    }
+    
+    
 switch(state){
 
 case M_IDLE:
+    sprite_index = enemy1idleSPR;
     //check for player
     if(instance_exists(playerBirdOBJ)){
         if(point_distance(x,y,playerBirdOBJ.x,playerBirdOBJ.y) &lt; 240){
@@ -156,7 +135,6 @@ case M_CHASE:
     image_speed = 0.4;
     if(instance_exists(playerBirdOBJ)){
     monster_pathingRatSCR()
-    
     if(playerBirdOBJ.x &gt; x){
     facing = 1;
     } else{
@@ -165,21 +143,35 @@ case M_CHASE:
     image_xscale= facing;
     var dist = point_distance(x,y,playerBirdOBJ.x,playerBirdOBJ.y)
     if(dist &gt; 320) state = M_IDLE;
-    if(dist &lt; 64){
+    if(dist &lt; 64 &amp;&amp; curCooldown &lt;= 0){
         //Attack here
-        state = M_ATTACk;   
+        state = M_ATTACK;
+        sprite_index = enemy1AttackSPR;
+        image_index = 0;
+        curCooldown = cooldown;
     }
     } else{
     state = M_IDLE;
     }
     
     break;
-
-
-
-
-
+    
+    case M_ATTACK:
+        //we're attacking
+        if(image_index == 2){
+        instance_create(x+(32*facing),y,monsterRatattackOBJ);
+        }
+        if(image_index &gt; 2){
+            state=M_IDLE;
+            sprite_index = enemy1idleSPR;
+        }
+        
+        
+    break;
 }
+
+    if(hp &lt;= 0) {instance_destroy(); audio_play_sound(enemy_deathSFX,0,0)};
+    
 </string>
           </argument>
         </arguments>

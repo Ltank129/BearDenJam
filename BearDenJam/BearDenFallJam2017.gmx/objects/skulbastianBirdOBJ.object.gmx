@@ -137,6 +137,7 @@ case -1:
         //the player is close enough;
         if(keyboard_check_pressed(ord("E"))){
         //start the dialogue
+            audio_play_sound(tribleSFX,0,0);
             isTalking = 0;
             playerTownBirdOBJ.state = P_STATE_MENU;
             with(myText){
@@ -227,6 +228,7 @@ case 1:
 
 case 2:
         if(myText == noone){
+        audio_play_sound(tribleSFX,0,0);
         myText = drawTextBoxBirdSCR("Okay, you tell me if you need anything!",1,x,y-48);
         }    
     }

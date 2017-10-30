@@ -29,7 +29,7 @@
 spd = 6;
 facing = 0;
 
-
+state = P_STATE_WALK;
 walkSprite[0] = playerWalkRightBirdSPR;
 walkSprite[1] = playerWalkBackBirdSPR;
 walkSprite[2] = playerWalkLeftBirdSPR;
@@ -39,7 +39,17 @@ idleSprite[0] = playerIdleRightBirdSPR;
 idleSprite[1] = playerIdleBackBirdSPR;
 idleSprite[2] = playerIdleLeftBirdSPR;
 idleSprite[3] = playerIdleFrontBirdSPR;
+
+attackSprite[0] = playerAttackRightBirdSPR;
+attackSprite[1] = playerAttackBackBirdSPR;
+attackSprite[2] = playerAttackLeftBirdSPR;
+attackSprite[3] = playerAttackFrontBirdSPR;
+
+
 image_speed =0.4;
+
+dmg = 20;
+
 </string>
           </argument>
         </arguments>
@@ -66,26 +76,57 @@ image_speed =0.4;
 depth=-y;
 
 
-//set movement stuff
-var hspd = (keyboard_check(vk_right) - keyboard_check(vk_left)) * spd;
-var vspd = (keyboard_check(vk_down) - keyboard_check(vk_up)) *spd;
+switch(state){
 
+case P_STATE_WALK:
+    
+    //set movement stuff
+    var hspd = ((keyboard_check(vk_right) || keyboard_check(ord("D"))) - (keyboard_check(vk_left) || keyboard_check(ord("A")))) * spd;
+    var vspd = ((keyboard_check(vk_down) || keyboard_check(ord("S")))- (keyboard_check(vk_up)|| keyboard_check(ord("W")))) *spd;
+    
+    mazeMoveBirdSCR(hspd,vspd);
+    //set facing
+    if(vspd &gt; 0) facing = 3;
+    if(vspd &lt; 0) facing = 1;
+    if(hspd &gt; 0) facing = 0;
+    if(hspd &lt; 0) facing = 2;
+    
+    if(vspd!= 0 || hspd!= 0){
+    sprite_index = walkSprite[facing];
+    }else{
+    sprite_index = idleSprite[facing];
+    }
+    
+    if(keyboard_check_pressed(ord("Q"))){
+    state = P_STATE_ATTACK;
+    audio_play_sound(swordSFX,0,0);
+    sprite_index = attackSprite[facing];
+    image_index = 0;
+    //We are attacking
+    }
+    
+    break;
 
-//set facing
-if(vspd &gt; 0) facing = 3;
-if(vspd &lt; 0) facing = 1;
-if(hspd &gt; 0) facing = 0;
-if(hspd &lt; 0) facing = 2;
-
-if(vspd!= 0 || hspd!= 0){
-sprite_index = walkSprite[facing];
-}else{
-sprite_index = idleSprite[facing];
-}
-
-
+case P_STATE_ATTACK:
+    if(image_index == 2){
+    //it is the attack frame;
+        var ax = 0;
+        var ay = 0;
+        switch(facing){
+        case 0: ax = 24; ay = 0; break;
+        case 1: ax = 0; ay = -24; break;
+        case 2: ax = -24; ay = 0; break;
+        case 3: ax = 0; ay = 24; break;
+        }
+        instance_create(x+ax,y+ay,playerAttackBirdOBJ);
+    }
+    if(image_index &gt; 2){
+    state = P_STATE_WALK;
+    }
+    break;
+    }
 //move
-mazeMoveBirdSCR(hspd,vspd);
+
 
 </string>
           </argument>

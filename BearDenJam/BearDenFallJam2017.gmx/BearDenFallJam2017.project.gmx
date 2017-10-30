@@ -28,6 +28,11 @@
       <sound>sound\townBKG</sound>
       <sound>sound\dungeonBKG</sound>
     </sounds>
+    <sound>sound\enemy_deathSFX</sound>
+    <sound>sound\swordSFX</sound>
+    <sound>sound\tribleSFX</sound>
+    <sound>sound\tledSFX</sound>
+    <sound>sound\enemy_hitSFX</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\monsterRatSPR</sprite>
@@ -52,6 +57,13 @@
         <sprite>sprites\keyBirdSPR</sprite>
         <sprite>sprites\boneLadderBirdSPR</sprite>
       </sprites>
+      <sprites name="Attack">
+        <sprite>sprites\playerAttackRightBirdSPR</sprite>
+        <sprite>sprites\playerAttackLeftBirdSPR</sprite>
+        <sprite>sprites\playerAttackBackBirdSPR</sprite>
+        <sprite>sprites\playerAttackFrontBirdSPR</sprite>
+      </sprites>
+      <sprite>sprites\playerDeathBirdSPR</sprite>
     </sprites>
     <sprites name="DungeonStuff">
       <sprite>sprites\dungeonDoorBirdSPR</sprite>
@@ -69,8 +81,10 @@
       <sprites name="human_female">
         <sprite>sprites\enemy1SPR</sprite>
         <sprite>sprites\enemy1idleSPR</sprite>
+        <sprite>sprites\enemy1AttackSPR</sprite>
       </sprites>
     </sprites>
+    <sprite>sprites\playerAttackSPR</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -123,10 +137,7 @@
       <object>objects\oKeyItemBirdOBJ</object>
     </objects>
     <object>objects\monsterRatattackOBJ</object>
-
-
     <object>objects\monsterparrentOBJ</object>
-
     <object>objects\doorBirdOBJ</object>
     <object>objects\staircaseBirdOBJ</object>
     <object>objects\fadeBirdOBJ</object>
@@ -142,18 +153,19 @@
       </objects>
     </objects>
     <object>objects\textBirdOBJ</object>
+    <object>objects\playerAttackBirdOBJ</object>
+    <object>objects\deadPlayerOBJ</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\testBirdRM</room>
     <room>rooms\townBirdRoom</room>
+    <room>rooms\testBirdRM</room>
   </rooms>
-  <constants number="15">
+  <constants number="16">
     <constant name="CELL_WIDTH">64</constant>
     <constant name="CELL_HEIGHT">96</constant>
     <constant name="FLOOR">-5</constant>
     <constant name="WALL">-6</constant>
     <constant name="VOID">-7</constant>
-    <constant name="P_WALK">-22</constant>
     <constant name="TOWN_DUNGEON_DOOR">10012</constant>
     <constant name="TOWN_SKULBASTIAN">10013</constant>
     <constant name="TOWN_HOUSE">10014</constant>
@@ -161,8 +173,10 @@
     <constant name="P_STATE_MENU">902</constant>
     <constant name="M_IDLE">-188</constant>
     <constant name="M_CHASE">-189</constant>
-    <constant name="M_ATTACk">-190</constant>
+    <constant name="M_ATTACK">-190</constant>
     <constant name="M_RECOVER">-191</constant>
+    <constant name="P_STATE_ATTACK">903</constant>
+    <constant name="P_STATE_IDLE">904</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
