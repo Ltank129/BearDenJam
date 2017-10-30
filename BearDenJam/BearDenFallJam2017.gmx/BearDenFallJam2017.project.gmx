@@ -71,6 +71,8 @@
         <sprite>sprites\enemy1idleSPR</sprite>
       </sprites>
     </sprites>
+    <sprite>sprites\logoscreenSPR</sprite>
+    <sprite>sprites\titlescreenSPR</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -123,10 +125,7 @@
       <object>objects\oKeyItemBirdOBJ</object>
     </objects>
     <object>objects\monsterRatattackOBJ</object>
-
-
     <object>objects\monsterparrentOBJ</object>
-
     <object>objects\doorBirdOBJ</object>
     <object>objects\staircaseBirdOBJ</object>
     <object>objects\fadeBirdOBJ</object>
@@ -142,10 +141,14 @@
       </objects>
     </objects>
     <object>objects\textBirdOBJ</object>
+    <object>objects\logoscreenOBJ</object>
+    <object>objects\titlescreenOBJ</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\testBirdRM</room>
+    <room>rooms\logo_screen</room>
+    <room>rooms\title_screen</room>
     <room>rooms\townBirdRoom</room>
+    <room>rooms\testBirdRM</room>
   </rooms>
   <constants number="15">
     <constant name="CELL_WIDTH">64</constant>
