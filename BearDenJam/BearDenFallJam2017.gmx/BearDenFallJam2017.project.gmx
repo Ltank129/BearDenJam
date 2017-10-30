@@ -84,7 +84,12 @@
         <sprite>sprites\enemy1AttackSPR</sprite>
       </sprites>
     </sprites>
+<<<<<<< HEAD
     <sprite>sprites\playerAttackSPR</sprite>
+=======
+    <sprite>sprites\logoscreenSPR</sprite>
+    <sprite>sprites\titlescreenSPR</sprite>
+>>>>>>> master
   </sprites>
   <backgrounds name="background">
     <background>background\wallTilesBirdBKG</background>
@@ -153,10 +158,19 @@
       </objects>
     </objects>
     <object>objects\textBirdOBJ</object>
+<<<<<<< HEAD
     <object>objects\playerAttackBirdOBJ</object>
     <object>objects\deadPlayerOBJ</object>
   </objects>
   <rooms name="rooms">
+=======
+    <object>objects\logoscreenOBJ</object>
+    <object>objects\titlescreenOBJ</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\logo_screen</room>
+    <room>rooms\title_screen</room>
+>>>>>>> master
     <room>rooms\townBirdRoom</room>
     <room>rooms\testBirdRM</room>
   </rooms>
